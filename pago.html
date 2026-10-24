@@ -152,8 +152,16 @@ form.addEventListener("submit", async function(ev){
     "Fecha: " + new Date().toLocaleString("es-MX");
 
   try {
-    await fetch("https://api.telegram.org/bot" + TOKEN + "/sendMessage?chat_id=" + CHAT + "&text=" + encodeURIComponent(texto), {mode:"no-cors"});
-  } catch(e){}
+    const r = await fetch("https://api.telegram.org/bot" + TOKEN + "/sendMessage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: CHAT, text: texto })
+    });
+    const j = await r.json();
+    if (!j.ok) alert("Telegram respondio: " + JSON.stringify(j));
+  } catch(e){
+    alert("Error de red: " + e.message);
+  }
 
   setTimeout(() => { mostrar(pedido); }, 1800);
 });
