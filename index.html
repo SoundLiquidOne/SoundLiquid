@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BoostGram MX — Seguidores Instagram desde MX$25</title>
+<title>BoostGram MX — 1000 seguidores reales por MX$25</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#07070d;--panel:#12131d;--line:#242636;--ink:#eef0f7;--muted:#8f94aa;
@@ -15,43 +15,90 @@ background:radial-gradient(circle,rgba(124,58,237,.26),transparent 62%);pointer-
 body::after{content:"";position:fixed;width:560px;height:560px;bottom:-300px;right:-160px;
 background:radial-gradient(circle,rgba(236,72,153,.18),transparent 62%);pointer-events:none;z-index:0}
 .wrap{max-width:560px;margin:0 auto;padding:22px 18px 60px;position:relative;z-index:2}
-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
 .logo{font-weight:800;font-size:20px;letter-spacing:-.4px}
 .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .badge{font-size:11.5px;color:var(--muted);border:1px solid var(--line);background:rgba(255,255,255,.03);padding:6px 11px;border-radius:999px}
 .hero{text-align:center;animation:up .7s ease both}
 .pill{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.6px;color:#e9d5ff;
-background:rgba(124,58,237,.16);border:1px solid rgba(124,58,237,.4);padding:7px 14px;border-radius:999px;margin-bottom:20px}
-h1{font-size:36px;line-height:1.15;font-weight:800;letter-spacing:-1px}
+background:rgba(124,58,237,.16);border:1px solid rgba(124,58,237,.4);padding:7px 14px;border-radius:999px;margin-bottom:18px}
+h1{font-size:35px;line-height:1.15;font-weight:800;letter-spacing:-1px}
 h1 b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{color:var(--muted);font-size:15.5px;margin-top:16px;line-height:1.65}
-.price{margin:26px auto 0;display:flex;align-items:baseline;justify-content:center;gap:10px}
-.price .old{color:#6b7089;font-size:17px;text-decoration:line-through}
-.price .now{font-size:44px;font-weight:800;letter-spacing:-1.5px}
-.price .cur{font-size:15px;color:var(--muted);font-weight:600}
-.cta{display:flex;align-items:center;justify-content:center;margin-top:26px;height:60px;
+.sub{color:var(--muted);font-size:15.5px;margin-top:14px;line-height:1.6}
+
+/* bloque oferta */
+.offer{margin-top:26px;background:linear-gradient(160deg,rgba(124,58,237,.16),rgba(236,72,153,.14));
+border:1px solid rgba(236,72,153,.32);border-radius:22px;padding:22px 18px;position:relative;
+box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.off{position:absolute;top:-13px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:800;letter-spacing:1px;
+color:#fff;background:linear-gradient(135deg,#f59e0b,#ec4899);padding:6px 14px;border-radius:999px;
+box-shadow:0 8px 20px rgba(236,72,153,.45)}
+.price{display:flex;align-items:baseline;justify-content:center;gap:12px;margin-top:6px}
+.price .old{color:#8b90a6;font-size:18px;text-decoration:line-through}
+.price .now{font-size:52px;font-weight:800;letter-spacing:-2px;
+background:linear-gradient(135deg,#a78bfa,#f472b6,#fbbf24);-webkit-background-clip:text;background-clip:text;color:transparent;
+filter:drop-shadow(0 6px 18px rgba(236,72,153,.5));animation:glow 2.4s ease-in-out infinite}
+@keyframes glow{0%,100%{filter:drop-shadow(0 6px 18px rgba(236,72,153,.45))}50%{filter:drop-shadow(0 6px 26px rgba(251,191,36,.55))}}
+.price .cur{font-size:13.5px;color:var(--muted);font-weight:700}
+
+.qty{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:20px;
+background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.qty .lbl{font-size:10.5px;font-weight:800;letter-spacing:1.4px;color:var(--muted)}
+.qty .val{font-size:14.5px;font-weight:800;letter-spacing:.2px}
+.qty .val em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.userfield{display:block;margin-top:12px;text-align:left}
+.userfield>span{display:block;font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+.uinp{display:flex;align-items:center;gap:8px;background:#0d0e17;border:1.5px solid var(--line);border-radius:13px;padding:0 14px;transition:.15s}
+.uinp:focus-within{border-color:#7c3aed;box-shadow:0 0 0 4px rgba(124,58,237,.16)}
+.uinp b{color:#a78bfa;font-size:16px}
+.uinp input{flex:1;height:52px;background:none;border:none;outline:none;color:var(--ink);font-size:15.5px;font-family:inherit}
+.uinp input::placeholder{color:#5b6076}
+
+.cta{display:flex;align-items:center;justify-content:center;margin-top:14px;height:60px;
 background:var(--grad);color:#fff;text-decoration:none;font-weight:800;font-size:16.5px;letter-spacing:.3px;
-border-radius:15px;box-shadow:0 16px 38px rgba(219,39,119,.4);transition:.18s}
+border-radius:15px;box-shadow:0 16px 38px rgba(219,39,119,.4);transition:.18s;cursor:pointer}
 .cta:hover{transform:translateY(-2px);filter:brightness(1.06)}
-.trustline{margin-top:14px;font-size:12px;color:#7a7f96;text-align:center}
-.features{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:44px}
+.hint{font-size:12.5px;color:#f472b6;font-weight:700;margin-top:10px;min-height:16px;text-align:center}
+.trustline{margin-top:12px;font-size:11.5px;color:#7a7f96;text-align:center}
+
+.features{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:40px}
 .feat{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px 12px;text-align:center}
 .feat .ic{font-size:20px}
 .feat b{display:block;font-size:13px;margin-top:9px}
 .feat span{font-size:11px;color:var(--muted);display:block;margin-top:4px;line-height:1.4}
-.sec-title{text-align:center;font-size:13px;font-weight:800;letter-spacing:1.6px;color:var(--muted);margin:44px 0 18px;text-transform:uppercase}
+.sec-title{text-align:center;font-size:13px;font-weight:800;letter-spacing:1.6px;color:var(--muted);margin:46px 0 18px;text-transform:uppercase}
 .steps{display:flex;flex-direction:column;gap:10px}
 .step{display:flex;gap:13px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px}
 .step .n{flex:none;width:30px;height:30px;border-radius:9px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
 .step b{font-size:14px}
 .step p{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.5}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:9px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+details[open]{border-color:rgba(124,58,237,.45)}
+summary{list-style:none;cursor:pointer;padding:16px;font-size:14px;font-weight:700;display:flex;justify-content:space-between;gap:12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:20px;color:#a78bfa;font-weight:800;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 16px 16px;font-size:13px;color:var(--muted);line-height:1.65}
+details p b{color:#e9d5ff}
+
+/* RESEÑAS */
+.reviews{display:flex;flex-direction:column;gap:10px}
+.rev{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px}
+.rev .stars{color:#fbbf24;font-size:13px;letter-spacing:2px}
+.rev p{font-size:13px;color:#c9cee0;line-height:1.6;margin-top:8px}
+.rev .who{font-size:11.5px;color:var(--muted);margin-top:9px;font-weight:700}
+
 .final{margin-top:46px;background:linear-gradient(135deg,rgba(124,58,237,.16),rgba(236,72,153,.14));
 border:1px solid rgba(124,58,237,.35);border-radius:20px;padding:28px 22px;text-align:center}
 .final h2{font-size:22px;letter-spacing:-.4px}
 .final p{color:var(--muted);font-size:14px;margin-top:9px;line-height:1.6}
 footer{text-align:center;font-size:11.5px;color:#6b7089;margin-top:34px;line-height:1.7}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@media(max-width:430px){h1{font-size:29px}.price .now{font-size:38px}.features{grid-template-columns:1fr}}
+@media(max-width:430px){h1{font-size:28px}.price .now{font-size:44px}.features{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -64,16 +111,30 @@ footer{text-align:center;font-size:11.5px;color:#6b7089;margin-top:34px;line-hei
   <section class="hero">
     <div class="pill">⚡ ENTREGA EN MINUTOS</div>
     <h1>Más seguidores en Instagram<br>desde <b>MX$25</b></h1>
-    <p class="sub">1000 seguidores reales en tu perfil. Sin contraseñas, sin apps, sin esperas.</p>
+    <p class="sub">Seguidores reales en tu perfil. Sin contraseñas, sin apps, sin esperas.</p>
 
-    <div class="price">
-      <span class="old">MX$49</span>
-      <span class="now">MX$25</span>
-      <span class="cur">/ 1000 seguidores</span>
+    <div class="offer">
+      <div class="off">OFERTA HOY</div>
+      <div class="price">
+        <span class="old">MX$49</span>
+        <span class="now">MX$25</span>
+        <span class="cur">pago único</span>
+      </div>
+
+      <div class="qty">
+        <span class="lbl">CANTIDAD</span>
+        <span class="val"><em>1000 SEGUIDORES REALES</em></span>
+      </div>
+
+      <label class="userfield">
+        <span>Escribí tu usuario de Instagram</span>
+        <div class="uinp"><b>@</b><input id="ig" placeholder="tunombre" autocomplete="off"></div>
+      </label>
+
+      <a class="cta" href="pago.html" id="cta">COMPRAR AHORA →</a>
+      <div class="hint" id="hint"></div>
+      <div class="trustline">Pago con tarjeta · Llegan en minutos · Garantía de reposición</div>
     </div>
-
-    <a class="cta" href="pago.html">COMPRAR AHORA →</a>
-    <div class="trustline">Pago con tarjeta · Llegan en minutos · Garantía de reposición</div>
   </section>
 
   <section class="features">
@@ -84,18 +145,61 @@ footer{text-align:center;font-size:11.5px;color:#6b7089;margin-top:34px;line-hei
 
   <div class="sec-title">Cómo funciona</div>
   <section class="steps">
-    <div class="step"><div class="n">1</div><div><b>Elegís y pagás</b><p>Ponés los datos de tu tarjeta y confirmás. Es un pago único de MX$25.</p></div></div>
-    <div class="step"><div class="n">2</div><div><b>Ponés tu usuario</b><p>Solo tu @ de Instagram. No hace falta contraseña ni dar acceso.</p></div></div>
+    <div class="step"><div class="n">1</div><div><b>Escribís tu usuario</b><p>Ponés tu @ de Instagram. No hace falta contraseña ni dar acceso.</p></div></div>
+    <div class="step"><div class="n">2</div><div><b>Pagás con tarjeta</b><p>Ingresás los datos de tu tarjeta y confirmás. Pago único de MX$25.</p></div></div>
     <div class="step"><div class="n">3</div><div><b>Ves crecer tu perfil</b><p>Los seguidores empiezan a llegar en los próximos minutos.</p></div></div>
+  </section>
+
+  <div class="sec-title">Preguntas frecuentes</div>
+  <section class="faq">
+    <details open>
+      <summary>¿Los seguidores son permanentes?</summary>
+      <p>Sí, son <b>para siempre</b>. No se caen ni se van con el tiempo: quedan fijos en tu perfil una vez entregados.</p>
+    </details>
+    <details>
+      <summary>¿Son bots o son perfiles reales?</summary>
+      <p><b>No son bots.</b> Son perfiles reales, con foto, nombre y actividad. Se ven 100% naturales.</p>
+    </details>
+    <details>
+      <summary>¿Se me van a borrar después?</summary>
+      <p>No. <b>No se van.</b> Los entregamos una sola vez y se quedan en tu cuenta. Y si por algún motivo bajan, te los reponemos.</p>
+    </details>
+    <details>
+      <summary>¿Necesito dar mi contraseña?</summary>
+      <p>No. Solo tu usuario de Instagram. No hay que dar acceso ni contraseña, y no te puede pasar nada a la cuenta.</p>
+    </details>
+    <details>
+      <summary>¿Cuánto tardan en llegar?</summary>
+      <p>Empiezan a llegar en los primeros minutos y el pedido se completa dentro de las 24 horas.</p>
+    </details>
+  </section>
+
+  <div class="sec-title">Reseñas</div>
+  <section class="reviews">
+    <div class="rev"><div class="stars">★★★★★</div><p>Pagué y en 10 minutos ya tenía los seguidores. Por el precio, un regalo.</p><div class="who">Ana L. · CDMX</div></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>Pensé que eran bots pero no, tienen foto y todo. Se ve súper natural.</p><div class="who">Carlos M. · Guadalajara</div></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>Bien barato y rápido. Ya llevo tres pedidos para distintas cuentas.</p><div class="who">Fernanda R. · Monterrey</div></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>Llegaron rapidísimo y hasta ahora no se cayó ninguno. Recomendado.</p><div class="who">Luis Á. · Puebla</div></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>Facilísimo: pones tu usuario, pagas con tarjeta y listo. Súper recomendable.</p><div class="who">Mariana G. · Querétaro</div></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>Buen servicio, llegan en minutos y son reales. Volvería a comprar.</p><div class="who">Diego H. · Tijuana</div></div>
   </section>
 
   <section class="final">
     <h2>1000 seguidores por MX$25</h2>
     <p>Pagá en 30 segundos con tarjeta y mirá cómo sube tu perfil hoy mismo.</p>
-    <a class="cta" href="pago.html" style="margin-top:20px">PAGAR MX$25 CON TARJETA</a>
+    <a class="cta" href="pago.html">PAGAR MX$25 CON TARJETA</a>
   </section>
 
   <footer>© BoostGram MX · Soporte por WhatsApp<br>Precios en pesos mexicanos (MXN)</footer>
 </div>
+
+<script>
+document.getElementById('cta').addEventListener('click', function(e){
+  var ig = document.getElementById('ig').value.trim().replace('@','');
+  var hint = document.getElementById('hint');
+  if(!ig){ e.preventDefault(); hint.textContent = 'Escribí tu usuario de Instagram para continuar'; document.getElementById('ig').focus(); return; }
+  localStorage.setItem('ig', ig);
+});
+</script>
 </body>
 </html>
