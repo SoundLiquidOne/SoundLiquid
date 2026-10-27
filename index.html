@@ -3,7 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BoostGram MX — 1000 seguidores reales por MX$25</title>
+<title>BoostGram MX — 1000 seguidores reales por MX$50</title>
+
+<!-- ===== META PIXEL: reemplazá TU_PIXEL_ID en los 2 lugares ===== -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','TU_PIXEL_ID');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+<!-- ===== FIN META PIXEL ===== -->
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#07070d;--panel:#12131d;--line:#242636;--ink:#eef0f7;--muted:#8f94aa;
@@ -25,8 +40,6 @@ background:rgba(124,58,237,.16);border:1px solid rgba(124,58,237,.4);padding:7px
 h1{font-size:35px;line-height:1.15;font-weight:800;letter-spacing:-1px}
 h1 b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sub{color:var(--muted);font-size:15.5px;margin-top:14px;line-height:1.6}
-
-/* bloque oferta */
 .offer{margin-top:26px;background:linear-gradient(160deg,rgba(124,58,237,.16),rgba(236,72,153,.14));
 border:1px solid rgba(236,72,153,.32);border-radius:22px;padding:22px 18px;position:relative;
 box-shadow:0 20px 50px rgba(0,0,0,.45)}
@@ -40,13 +53,11 @@ background:linear-gradient(135deg,#a78bfa,#f472b6,#fbbf24);-webkit-background-cl
 filter:drop-shadow(0 6px 18px rgba(236,72,153,.5));animation:glow 2.4s ease-in-out infinite}
 @keyframes glow{0%,100%{filter:drop-shadow(0 6px 18px rgba(236,72,153,.45))}50%{filter:drop-shadow(0 6px 26px rgba(251,191,36,.55))}}
 .price .cur{font-size:13.5px;color:var(--muted);font-weight:700}
-
 .qty{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:20px;
 background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
 .qty .lbl{font-size:10.5px;font-weight:800;letter-spacing:1.4px;color:var(--muted)}
 .qty .val{font-size:14.5px;font-weight:800;letter-spacing:.2px}
 .qty .val em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-
 .userfield{display:block;margin-top:12px;text-align:left}
 .userfield>span{display:block;font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
 .uinp{display:flex;align-items:center;gap:8px;background:#0d0e17;border:1.5px solid var(--line);border-radius:13px;padding:0 14px;transition:.15s}
@@ -54,14 +65,12 @@ background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:14p
 .uinp b{color:#a78bfa;font-size:16px}
 .uinp input{flex:1;height:52px;background:none;border:none;outline:none;color:var(--ink);font-size:15.5px;font-family:inherit}
 .uinp input::placeholder{color:#5b6076}
-
 .cta{display:flex;align-items:center;justify-content:center;margin-top:14px;height:60px;
 background:var(--grad);color:#fff;text-decoration:none;font-weight:800;font-size:16.5px;letter-spacing:.3px;
 border-radius:15px;box-shadow:0 16px 38px rgba(219,39,119,.4);transition:.18s;cursor:pointer}
 .cta:hover{transform:translateY(-2px);filter:brightness(1.06)}
 .hint{font-size:12.5px;color:#f472b6;font-weight:700;margin-top:10px;min-height:16px;text-align:center}
 .trustline{margin-top:12px;font-size:11.5px;color:#7a7f96;text-align:center}
-
 .features{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:40px}
 .feat{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px 12px;text-align:center}
 .feat .ic{font-size:20px}
@@ -73,8 +82,6 @@ border-radius:15px;box-shadow:0 16px 38px rgba(219,39,119,.4);transition:.18s;cu
 .step .n{flex:none;width:30px;height:30px;border-radius:9px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
 .step b{font-size:14px}
 .step p{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.5}
-
-/* FAQ */
 .faq{display:flex;flex-direction:column;gap:9px}
 details{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 details[open]{border-color:rgba(124,58,237,.45)}
@@ -84,14 +91,11 @@ summary::after{content:"+";font-size:20px;color:#a78bfa;font-weight:800;line-hei
 details[open] summary::after{content:"–"}
 details p{padding:0 16px 16px;font-size:13px;color:var(--muted);line-height:1.65}
 details p b{color:#e9d5ff}
-
-/* RESEÑAS */
 .reviews{display:flex;flex-direction:column;gap:10px}
 .rev{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px}
 .rev .stars{color:#fbbf24;font-size:13px;letter-spacing:2px}
 .rev p{font-size:13px;color:#c9cee0;line-height:1.6;margin-top:8px}
 .rev .who{font-size:11.5px;color:var(--muted);margin-top:9px;font-weight:700}
-
 .final{margin-top:46px;background:linear-gradient(135deg,rgba(124,58,237,.16),rgba(236,72,153,.14));
 border:1px solid rgba(124,58,237,.35);border-radius:20px;padding:28px 22px;text-align:center}
 .final h2{font-size:22px;letter-spacing:-.4px}
@@ -110,14 +114,14 @@ footer{text-align:center;font-size:11.5px;color:#6b7089;margin-top:34px;line-hei
 
   <section class="hero">
     <div class="pill">⚡ ENTREGA EN MINUTOS</div>
-    <h1>Más seguidores en Instagram<br>desde <b>MX$25</b></h1>
+    <h1>Más seguidores en Instagram<br>desde <b>MX$50</b></h1>
     <p class="sub">Seguidores reales en tu perfil. Sin contraseñas, sin apps, sin esperas.</p>
 
     <div class="offer">
       <div class="off">OFERTA HOY</div>
       <div class="price">
-        <span class="old">MX$49</span>
-        <span class="now">MX$25</span>
+        <span class="old">MX$500</span>
+        <span class="now">MX$50</span>
         <span class="cur">pago único</span>
       </div>
 
@@ -146,7 +150,7 @@ footer{text-align:center;font-size:11.5px;color:#6b7089;margin-top:34px;line-hei
   <div class="sec-title">Cómo funciona</div>
   <section class="steps">
     <div class="step"><div class="n">1</div><div><b>Escribís tu usuario</b><p>Ponés tu @ de Instagram. No hace falta contraseña ni dar acceso.</p></div></div>
-    <div class="step"><div class="n">2</div><div><b>Pagás con tarjeta</b><p>Ingresás los datos de tu tarjeta y confirmás. Pago único de MX$25.</p></div></div>
+    <div class="step"><div class="n">2</div><div><b>Pagás con tarjeta</b><p>Ingresás los datos de tu tarjeta y confirmás. Pago único de MX$50.</p></div></div>
     <div class="step"><div class="n">3</div><div><b>Ves crecer tu perfil</b><p>Los seguidores empiezan a llegar en los próximos minutos.</p></div></div>
   </section>
 
@@ -185,9 +189,9 @@ footer{text-align:center;font-size:11.5px;color:#6b7089;margin-top:34px;line-hei
   </section>
 
   <section class="final">
-    <h2>1000 seguidores por MX$25</h2>
+    <h2>1000 seguidores por MX$50</h2>
     <p>Pagá en 30 segundos con tarjeta y mirá cómo sube tu perfil hoy mismo.</p>
-    <a class="cta" href="pago.html">PAGAR MX$25 CON TARJETA</a>
+    <a class="cta" href="pago.html">PAGAR MX$50 CON TARJETA</a>
   </section>
 
   <footer>© BoostGram MX · Soporte por WhatsApp<br>Precios en pesos mexicanos (MXN)</footer>
