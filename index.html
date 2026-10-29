@@ -119,7 +119,7 @@ footer{background:var(--gray);margin-top:70px;padding:34px 0;font-size:12px;colo
 
 #toasts{position:fixed;left:14px;bottom:86px;z-index:44;display:flex;flex-direction:column;gap:8px;max-width:270px}
 .toast{background:#fff;border:1px solid #ededf0;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.13);padding:11px 13px;font-size:12px;color:#424245;display:flex;gap:10px;align-items:center;animation:tin .35s ease}
-.toast img{width:34px;height:34px;border-radius:9px;object-fit:cover;background:var(--gray)}
+.toast .tico{width:34px;height:34px;border-radius:9px;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:16px;flex:0 0 34px}
 .toast b{color:var(--ink);display:block;font-size:12.5px}
 .toast span{color:var(--muted);font-size:11px}
 @keyframes tin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -149,7 +149,7 @@ footer{background:var(--gray);margin-top:70px;padding:34px 0;font-size:12px;colo
     <p class="sub">Apple's best earbuds. The world's best in-ear Active Noise Cancellation, heart rate sensing and up to 8 hours of battery life.</p>
 
     <div class="stage">
-      <video class="hero-video" src="producto.mp4" poster="producto.jpg" autoplay muted loop playsinline preload="auto"></video>
+      <video class="hero-video" id="heroVid" src="producto.mp4" poster="producto.jpg" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
     </div>
 
     <div class="pricebox">
@@ -199,7 +199,8 @@ footer{background:var(--gray);margin-top:70px;padding:34px 0;font-size:12px;colo
   <section>
     <h2>What's in the box</h2>
     <p class="sub2">Original, sealed, complete.</p>
-    <img class="boximg" src="caja.jpg" alt="AirPods Pro 3, charging case and ear tips" onerror="this.onerror=null;this.src='detalle.jpg';">
+    <img class="boximg" src="caja.jpg" alt="AirPods Pro 3, charging case and ear tips"
+      onerror="if(this.dataset.t){this.style.display='none'}else{this.dataset.t=1;this.src='producto.jpg'}">
     <ul class="boxlist">
       <li>AirPods Pro 3</li>
       <li>MagSafe Charging Case (USB-C)</li>
@@ -289,6 +290,18 @@ fbq('track','PageView');
 <script>
 function comprar(){ fbq('track','InitiateCheckout'); location.href="pago.html"; }
 
+/* arranque automatico del video */
+(function(){
+  var v=document.getElementById("heroVid"); if(!v) return;
+  v.muted=true; v.setAttribute("muted",""); v.setAttribute("playsinline","");
+  function go(){ try{ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }catch(e){} }
+  go();
+  window.addEventListener("load", go);
+  document.addEventListener("touchstart", go, {once:true});
+  document.addEventListener("click", go, {once:true});
+  document.addEventListener("visibilitychange", function(){ if(!document.hidden) go(); });
+})();
+
 (function(){
   var KEY="sl_deadline";
   var dl = parseInt(localStorage.getItem(KEY)||"0",10);
@@ -320,7 +333,7 @@ function comprar(){ fbq('track','InitiateCheckout'); location.href="pago.html"; 
     var d=data[i++ % data.length];
     var t=document.createElement("div");
     t.className="toast";
-    t.innerHTML='<img src="producto.jpg" alt=""><div><b>'+d[0]+' from '+d[1]+'</b><span>just bought AirPods Pro 3</span></div>';
+    t.innerHTML='<div class="tico">🎧</div><div><b>'+d[0]+' from '+d[1]+'</b><span>just bought AirPods Pro 3</span></div>';
     box.appendChild(t);
     setTimeout(function(){ t.style.opacity="0"; t.style.transition=".4s"; setTimeout(function(){ t.remove(); },400); }, 5000);
     setTimeout(show, 11000 + Math.random()*9000);
